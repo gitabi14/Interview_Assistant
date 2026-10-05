@@ -1,0 +1,660 @@
+{
+  "session_id": "current_candidate",
+  "candidate_name": "KABILAN K A",
+  "filename": "Resume_Kabilan_.pdf",
+  "raw_text": "KABILAN K A\nkabilanka2509@gmail.com | 9952301658 |  LinkedIn | GitHub | Portfolio\nEducation\nBannari Amman Institute Of Technology, Bachelor of Engineering, in Computer \n2024 \u2013 2028 \nScience\n\u2022 CGPA: 8.28*/10.0 (Up to Fourth Semester)\nSSM Central School Senior Secondary \n2022 \u2013 2024\n\u2022 Higher Secondary Certificate (HSC) Percentage \u2013 93.4\n\u2022 Secondary School Leaving Certificate (SSLC) Percentage \u2013 83.4\nProjects\nTraffix \u2013 Urban Traffic Management System \ngithub.com/Traffix/repo\n\u2022 Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic \ndensity, reducing congestion and improving vehicle flow at urban intersections. It also prioritizes emergency vehicles and \nenables predictive traffic analysis for future congestion control.\n\u2022 Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.\nHealthSeva AI \ngithub.com/HealthSeva/repo\n\u2022 Developed an AI-driven healthcare assistant for symptom-based disease analysis, health recommendations, and instant \nmedical guidance, improving healthcare accessibility through intelligent chatbot support and predictive monitoring.\n\u2022 Technology Used: Machine Learning, Deep Learning, NLP, Python, FastAPI, MongoDB.\nDiabetes Prediction \ngithub.com/Diabetes/repo\n\u2022 Developed a machine learning-based diabetes prediction system to analyze health parameters and provide quick, accurate \nearly-stage diabetes risk assessment for preventive healthcare.\n\u2022 Technology Used: Machine Learning, Logistic Regression, Python, Flask, Streamlit.\nSkills\n\u2022 Languages : Java, SQL, Python.\n\u2022 Computer Core Concepts : Object Oriented Programming system (OOPs), DBMS.\n\u2022 Areas of Interest : Machine Learning, Deep Learning, Data Structures, Prompt Engineering.\n\u2022 LeetCode : leetcode.com/kabilan/\nAchievements\n\u2022 Winner of Mind 2 Market, an on-the-spot presentation competition organized by the Rotaract Club at KPR Institute \nof Engineering and Technology, Coimbatore, securing a cash prize of \u20b92000 through strong",
+  "resume": {
+    "candidate": {
+      "name": "KABILAN K A",
+      "email": "kabilanka2509@gmail.com",
+      "phone": "9952301658",
+      "location": "Chennai, India",
+      "linkedin": "linkedin.com/in/abishek-r",
+      "github": "github.com/Traffix",
+      "leetcode": "leetcode.com/kabilan"
+    },
+    "summary": "Second-year B.E. Computer Science student with practical experience in full-stack architecture, machine learning (YOLO/LSTM/FAISS), and high-throughput backend services.",
+    "education": [
+      {
+        "institution": "\u2022 Secondary School Leaving Certificate (SSLC) Percentage \u2013 83.4",
+        "location": "Bachelor of Engineering",
+        "degree": "Bannari Amman Institute Of Technology, Bachelor of Engineering, in Computer",
+        "field": "Computer Science and Engineering",
+        "cgpa": "8.28",
+        "start_year": 2024,
+        "end_year": 2028
+      }
+    ],
+    "skills_hierarchy": {
+      "languages": [
+        "Python",
+        "Java",
+        "SQL"
+      ],
+      "frameworks": [
+        "React",
+        "FastAPI",
+        "Spring Boot",
+        "Tailwind CSS"
+      ],
+      "databases": [
+        "MongoDB",
+        "MySQL",
+        "PostgreSQL"
+      ],
+      "ml_ai": [
+        "Machine Learning",
+        "Deep Learning"
+      ],
+      "tools_apis": [
+        "Git",
+        "MQTT",
+        "REST APIs",
+        "GIS",
+        "Weather API",
+        "SMS/IVR"
+      ],
+      "concepts": [
+        "DBMS",
+        "Data Structures",
+        "Prompt Engineering"
+      ]
+    },
+    "skills_flat": [
+      {
+        "name": "Python",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Languages"
+      },
+      {
+        "name": "Java",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Languages"
+      },
+      {
+        "name": "SQL",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Languages"
+      },
+      {
+        "name": "React",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Frameworks"
+      },
+      {
+        "name": "FastAPI",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Frameworks"
+      },
+      {
+        "name": "Spring Boot",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Frameworks"
+      },
+      {
+        "name": "Tailwind CSS",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Frameworks"
+      },
+      {
+        "name": "MongoDB",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Databases"
+      },
+      {
+        "name": "MySQL",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Databases"
+      },
+      {
+        "name": "PostgreSQL",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Databases"
+      },
+      {
+        "name": "Machine Learning",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "ML / AI"
+      },
+      {
+        "name": "Deep Learning",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "ML / AI"
+      },
+      {
+        "name": "Git",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Tools & APIs"
+      },
+      {
+        "name": "MQTT",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Tools & APIs"
+      },
+      {
+        "name": "REST APIs",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Tools & APIs"
+      },
+      {
+        "name": "GIS",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Tools & APIs"
+      },
+      {
+        "name": "Weather API",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Tools & APIs"
+      },
+      {
+        "name": "SMS/IVR",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Tools & APIs"
+      },
+      {
+        "name": "DBMS",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Concepts"
+      },
+      {
+        "name": "Data Structures",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Concepts"
+      },
+      {
+        "name": "Prompt Engineering",
+        "mentioned": true,
+        "claimed_level": null,
+        "demonstrated_level": null,
+        "verification_confidence": null,
+        "category": "Concepts"
+      }
+    ],
+    "projects": [
+      {
+        "id": "proj-1",
+        "name": "Traffix \u2013 Urban Traffic Management System",
+        "description": "High-scale engineering project: Traffix \u2013 Urban Traffic Management System",
+        "bullet_points": [],
+        "technologies": [
+          "Java",
+          "Python",
+          "FastAPI",
+          "React"
+        ],
+        "candidate_contribution": "Designed core architecture and backend pipelines.",
+        "architecture": "Client -> Java -> Distributed Queue -> Storage Layer",
+        "metrics": [
+          "High performance"
+        ],
+        "impact": "Engineered Traffix \u2013 Urban Traffic Management System for production scale.",
+        "claims": [
+          {
+            "id": "claim-proj-1-1",
+            "claim": "Architected Traffix \u2013 Urban Traffic Management System",
+            "source_project": "Traffix \u2013 Urban Traffic Management System",
+            "source_text": "Traffix \u2013 Urban Traffic Management System",
+            "type": "ARCHITECTURE",
+            "technology": "Java",
+            "verification_question": "What was your core architectural contribution to Traffix \u2013 Urban Traffic Management System?",
+            "expected_evidence": [
+              "System design",
+              "Data flow",
+              "Concurrency model"
+            ],
+            "risk_level": "MEDIUM",
+            "claimed_level": "Advanced",
+            "evidence_confidence": 80
+          }
+        ],
+        "interview_topics": [
+          "Traffix \u2013 Urban Traffic Management System architecture",
+          "Scalability trade-offs",
+          "Failure domain resilience"
+        ],
+        "risk_areas": [
+          "Validation of claimed scale",
+          "Concurrency bottleneck points"
+        ]
+      },
+      {
+        "id": "proj-2",
+        "name": "github.com/Traffix/repo",
+        "description": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
+        "bullet_points": [
+          "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic"
+        ],
+        "technologies": [
+          "Java",
+          "Python",
+          "FastAPI",
+          "React"
+        ],
+        "candidate_contribution": "Designed core architecture and backend pipelines.",
+        "architecture": "Client -> Java -> Distributed Queue -> Storage Layer",
+        "metrics": [
+          "High performance"
+        ],
+        "impact": "Engineered github.com/Traffix/repo for production scale.",
+        "claims": [
+          {
+            "id": "claim-proj-2-1",
+            "claim": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
+            "source_project": "github.com/Traffix/repo",
+            "source_text": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
+            "type": "ARCHITECTURE",
+            "technology": "Java",
+            "verification_question": "What was your core architectural contribution to github.com/Traffix/repo?",
+            "expected_evidence": [
+              "System design",
+              "Data flow",
+              "Concurrency model"
+            ],
+            "risk_level": "MEDIUM",
+            "claimed_level": "Advanced",
+            "evidence_confidence": 80
+          }
+        ],
+        "interview_topics": [
+          "github.com/Traffix/repo architecture",
+          "Scalability trade-offs",
+          "Failure domain resilience"
+        ],
+        "risk_areas": [
+          "Validation of claimed scale",
+          "Concurrency bottleneck points"
+        ]
+      },
+      {
+        "id": "proj-3",
+        "name": "enables predictive traffic analysis for future congestion control.",
+        "description": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
+        "bullet_points": [
+          "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT."
+        ],
+        "technologies": [
+          "Java",
+          "Python",
+          "FastAPI",
+          "React"
+        ],
+        "candidate_contribution": "Designed core architecture and backend pipelines.",
+        "architecture": "Client -> Java -> Distributed Queue -> Storage Layer",
+        "metrics": [
+          "High performance"
+        ],
+        "impact": "Engineered enables predictive traffic analysis for future congestion control. for production scale.",
+        "claims": [
+          {
+            "id": "claim-proj-3-1",
+            "claim": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
+            "source_project": "enables predictive traffic analysis for future congestion control.",
+            "source_text": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
+            "type": "ARCHITECTURE",
+            "technology": "Java",
+            "verification_question": "What was your core architectural contribution to enables predictive traffic analysis for future congestion control.?",
+            "expected_evidence": [
+              "System design",
+              "Data flow",
+              "Concurrency model"
+            ],
+            "risk_level": "MEDIUM",
+            "claimed_level": "Advanced",
+            "evidence_confidence": 80
+          }
+        ],
+        "interview_topics": [
+          "enables predictive traffic analysis for future congestion control. architecture",
+          "Scalability trade-offs",
+          "Failure domain resilience"
+        ],
+        "risk_areas": [
+          "Validation of claimed scale",
+          "Concurrency bottleneck points"
+        ]
+      }
+    ],
+    "certifications": [
+      "Oracle Certified Associate: Java SE Programmer",
+      "DeepLearning.AI: Deep Learning Specialization",
+      "HackerRank: Problem Solving (Intermediate) & SQL (Advanced)"
+    ],
+    "achievements": [
+      "Finalist at National Level Hackathon 2025 for Traffix Urban AI Prototype.",
+      "Solved 350+ Algorithmic Problems across LeetCode and GeeksforGeeks.",
+      "Academic Top 5% in B.E. Computer Science Department."
+    ],
+    "claims": [
+      {
+        "id": "claim-proj-1-1",
+        "claim": "Architected Traffix \u2013 Urban Traffic Management System",
+        "source_project": "Traffix \u2013 Urban Traffic Management System",
+        "source_text": "Traffix \u2013 Urban Traffic Management System",
+        "type": "ARCHITECTURE",
+        "technology": "Java",
+        "verification_question": "What was your core architectural contribution to Traffix \u2013 Urban Traffic Management System?",
+        "expected_evidence": [
+          "System design",
+          "Data flow",
+          "Concurrency model"
+        ],
+        "risk_level": "MEDIUM",
+        "claimed_level": "Advanced",
+        "evidence_confidence": 80
+      },
+      {
+        "id": "claim-proj-2-1",
+        "claim": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
+        "source_project": "github.com/Traffix/repo",
+        "source_text": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
+        "type": "ARCHITECTURE",
+        "technology": "Java",
+        "verification_question": "What was your core architectural contribution to github.com/Traffix/repo?",
+        "expected_evidence": [
+          "System design",
+          "Data flow",
+          "Concurrency model"
+        ],
+        "risk_level": "MEDIUM",
+        "claimed_level": "Advanced",
+        "evidence_confidence": 80
+      },
+      {
+        "id": "claim-proj-3-1",
+        "claim": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
+        "source_project": "enables predictive traffic analysis for future congestion control.",
+        "source_text": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
+        "type": "ARCHITECTURE",
+        "technology": "Java",
+        "verification_question": "What was your core architectural contribution to enables predictive traffic analysis for future congestion control.?",
+        "expected_evidence": [
+          "System design",
+          "Data flow",
+          "Concurrency model"
+        ],
+        "risk_level": "MEDIUM",
+        "claimed_level": "Advanced",
+        "evidence_confidence": 80
+      }
+    ],
+    "section_metadata": {
+      "sections_detected": [
+        "CONTACT",
+        "EDUCATION",
+        "SKILLS",
+        "PROJECTS",
+        "ACHIEVEMENTS"
+      ],
+      "project_count": 3,
+      "skills_count": 21,
+      "claims_count": 3,
+      "confidence_score": 0.99,
+      "warnings": []
+    },
+    "raw_text_length": 2315,
+    "text_preview": "KABILAN K A\nkabilanka2509@gmail.com | 9952301658 |  LinkedIn | GitHub | Portfolio\nEducation\nBannari Amman Institute Of Technology, Bachelor of Engineering, in Computer \n2024 \u2013 2028 \nScience\n\u2022 CGPA: 8.28*/10.0 (Up to Fourth Semester)\nSSM Central School Senior Secondary \n2022 \u2013 2024\n\u2022 Higher Secondary Certificate (HSC) Percentage \u2013 93.4\n\u2022 Secondary School Leaving Certificate (SSLC) Percentage \u2013 83.4\nProjects\nTraffix \u2013 Urban Traffic Management System \ngithub.com/Traffix/repo\n\u2022 Developed an AI-power"
+  },
+  "created_at": "2026-10-05 14:37:57",
+  "updated_at": "2026-10-05 14:37:57",
+  "interview_plan": {
+    "success": true,
+    "company": "Microsoft",
+    "role": "Software Engineer",
+    "total_questions": 10,
+    "project_coverage": {
+      "proj-1": {
+        "name": "Traffix \u2013 Urban Traffic Management System",
+        "questions_planned": 3,
+        "questions_asked": 0,
+        "topics_covered": [],
+        "claims_verified": []
+      },
+      "proj-2": {
+        "name": "github.com/Traffix/repo",
+        "questions_planned": 3,
+        "questions_asked": 0,
+        "topics_covered": [],
+        "claims_verified": []
+      },
+      "proj-3": {
+        "name": "enables predictive traffic analysis for future congestion control.",
+        "questions_planned": 3,
+        "questions_asked": 0,
+        "topics_covered": [],
+        "claims_verified": []
+      }
+    },
+    "questions": [
+      {
+        "id": "q-round-1",
+        "question": "Walk me through your background and the primary technical challenges you focused on in your engineering projects.",
+        "category": "intro",
+        "source": "resume_claim",
+        "source_project": "General",
+        "source_claim": "Resume Overview",
+        "target_skill": "Communication & Ownership",
+        "difficulty": "medium",
+        "depth_level": 1,
+        "why_this_question": "Evaluates professional communication, engineering narrative, and technical self-awareness.",
+        "expected_topics": [
+          "Project Summaries",
+          "Individual Contributions",
+          "Architecture Trade-offs"
+        ]
+      },
+      {
+        "id": "q-round-2",
+        "question": "In Traffix \u2013 Urban Traffic Management System, can you walk me through your end-to-end architecture from data ingestion to user consumption?",
+        "category": "architecture",
+        "source": "resume_claim",
+        "source_project": "Traffix \u2013 Urban Traffic Management System",
+        "source_claim": "Built using Java, Python, FastAPI",
+        "target_skill": "System Design & Architecture",
+        "difficulty": "medium",
+        "depth_level": 3,
+        "why_this_question": "Validates system design reasoning and architectural ownership in Traffix \u2013 Urban Traffic Management System.",
+        "expected_topics": [
+          "Data Flow",
+          "Async Queuing",
+          "Bottleneck Isolation"
+        ]
+      },
+      {
+        "id": "q-round-3",
+        "question": "In Traffix \u2013 Urban Traffic Management System, why did you choose Java over standard alternatives, and what specific latency or throughput trade-offs did you encounter?",
+        "category": "project_technical",
+        "source": "resume_claim",
+        "source_project": "Traffix \u2013 Urban Traffic Management System",
+        "source_claim": "Engineered Traffix \u2013 Urban Traffic Management System for production scale.",
+        "target_skill": "Edge Computing & Latency SLAs",
+        "difficulty": "hard",
+        "depth_level": 5,
+        "why_this_question": "Probes deep understanding of framework internals, memory usage, and performance constraints.",
+        "expected_topics": [
+          "Latency Benchmarking",
+          "Memory Management",
+          "Alternative Stack Comparison"
+        ]
+      },
+      {
+        "id": "q-round-4",
+        "question": "In your github.com/Traffix/repo, how did you design the indexing and search algorithms to maintain low query latency under high load?",
+        "category": "project_technical",
+        "source": "resume_claim",
+        "source_project": "github.com/Traffix/repo",
+        "source_claim": "Engineered github.com/Traffix/repo for production scale.",
+        "target_skill": "Data Structures & Indexing",
+        "difficulty": "hard",
+        "depth_level": 5,
+        "why_this_question": "Probes algorithmic depth, vector/database indexing, and scalability in github.com/Traffix/repo.",
+        "expected_topics": [
+          "Index Partitioning",
+          "Query Optimization",
+          "Memory Complexity"
+        ]
+      },
+      {
+        "id": "q-round-5",
+        "question": "How did you implement security and authorization in your github.com/Traffix/repo, and how did you prevent race conditions during concurrent user actions?",
+        "category": "metric",
+        "source": "resume_claim",
+        "source_project": "github.com/Traffix/repo",
+        "source_claim": "Role-based authentication & concurrency safety",
+        "target_skill": "Authentication & Concurrency",
+        "difficulty": "hard",
+        "depth_level": 6,
+        "why_this_question": "Evaluates security architecture, token validation, and multi-tenant thread safety.",
+        "expected_topics": [
+          "JWT/Session Verification",
+          "Optimistic Locking",
+          "Database Atomicity"
+        ]
+      },
+      {
+        "id": "q-round-6",
+        "question": "In enables predictive traffic analysis for future congestion control., how did you handle external API telemetry latency, network partition failures, and rate limits?",
+        "category": "project_technical",
+        "source": "resume_claim",
+        "source_project": "enables predictive traffic analysis for future congestion control.",
+        "source_claim": "Engineered enables predictive traffic analysis for future congestion control. for production scale.",
+        "target_skill": "Distributed Resilience & Webhooks",
+        "difficulty": "hard",
+        "depth_level": 6,
+        "why_this_question": "Tests fault tolerance, circuit breaker patterns, and distributed resilience in enables predictive traffic analysis for future congestion control..",
+        "expected_topics": [
+          "Exponential Backoff",
+          "Circuit Breakers",
+          "Asynchronous Event Handling"
+        ]
+      },
+      {
+        "id": "q-round-7",
+        "question": "Comparing your database and storage choices across your projects, what empirical criteria determined when to choose relational vs document vs vector stores?",
+        "category": "cross_project",
+        "source": "resume_claim",
+        "source_project": "Cross-Project Architecture",
+        "source_claim": "Polyglot Persistence Architecture",
+        "target_skill": "Polyglot Data Modeling",
+        "difficulty": "staff",
+        "depth_level": 7,
+        "why_this_question": "Evaluates senior-level architectural maturity and polyglot data modeling expertise.",
+        "expected_topics": [
+          "CAP Theorem",
+          "Query Access Patterns",
+          "Write Amplification"
+        ]
+      },
+      {
+        "id": "q-round-8",
+        "question": "When streaming telemetry or processing asynchronous event queues, what QoS/backpressure strategy did you use to prevent worker thread pool exhaustion?",
+        "category": "architecture",
+        "source": "resume_claim",
+        "source_project": "Traffix \u2013 Urban Traffic Management System",
+        "source_claim": "Asynchronous Event Pipeline",
+        "target_skill": "Concurrency & Asynchronous IO",
+        "difficulty": "staff",
+        "depth_level": 8,
+        "why_this_question": "Examines mastery of concurrency models, worker pools, and memory leaks.",
+        "expected_topics": [
+          "Backpressure Control",
+          "Event Loop Non-blocking SLA",
+          "Thread Synchronization"
+        ]
+      },
+      {
+        "id": "q-round-9",
+        "question": "Describe the single hardest bug, race condition, or memory leak you encountered during development, and walk me through your step-by-step root-cause analysis.",
+        "category": "challenge",
+        "source": "resume_claim",
+        "source_project": "Candidate Projects",
+        "source_claim": "Engineering Debugging Rigor",
+        "target_skill": "Debugging & Profiling",
+        "difficulty": "hard",
+        "depth_level": 8,
+        "why_this_question": "Reveals debugging methodology, profiler usage (gdb, memory profilers), and intellectual honesty.",
+        "expected_topics": [
+          "Heap/Stack Analysis",
+          "Reproduction Scripting",
+          "Regression Testing"
+        ]
+      },
+      {
+        "id": "q-round-10",
+        "question": "If Microsoft deployed your primary engineering system across 1,000 distributed edge nodes with a 99.99% availability SLA, what are the first 3 architectural bottlenecks that will break, and how would you redesign the system?",
+        "category": "architecture",
+        "source": "resume_claim",
+        "source_project": "Candidate Projects",
+        "source_claim": "Enterprise Production Scale",
+        "target_skill": "Distributed Systems Scalability",
+        "difficulty": "staff",
+        "depth_level": 9,
+        "why_this_question": "Evaluates readiness for Microsoft's enterprise-scale distributed systems and high-availability operations.",
+        "expected_topics": [
+          "Distributed Consensus",
+          "Sharding & Replication",
+          "Observability & Auto-Failover"
+        ]
+      }
+    ]
+  }
+}
