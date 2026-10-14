@@ -688,43 +688,96 @@ export const PrepForgeProvider: React.FC<{ children: ReactNode }> = ({ children 
     }
 
     // Deterministic fallback if backend is unreachable
-    const ansLower = answerText.toLowerCase();
+    const ansLower = answerText.toLowerCase().trim();
+    const cleanChars = ansLower.replace(/[^a-z]/g, '');
+    const vowels = (cleanChars.match(/[aeiouy]/g) || []).length;
+    const isGibberishLocal =
+      (cleanChars.length >= 4 && (vowels === 0 || (cleanChars.length >= 8 && vowels / cleanChars.length < 0.12)) && !['jwt', 'sql', 'aws', 'css', 'html', 'api', 'db', 'os', 'k8s', 'tcp'].includes(cleanChars)) ||
+      /(.)\1{4,}/.test(ansLower) ||
+      ['asdfgh', 'zxcvbn', 'qwertyui', 'asdfasdf'].some((s) => ansLower.includes(s));
+    const isEvasionLocal = ['skip', 'pass', 'next', 'idk', 'none', 'nothing', 'whatever', 'no answer', 'bye', 'exit', 'quit', 'ok', 'cool'].includes(ansLower);
+    const isCasualOffTopic = ['pizza', 'burger', 'ice cream', 'football', 'soccer', 'weather', 'movie', 'sleep', 'party', 'weekend', 'dog', 'cat'].some((w) => ansLower.includes(w));
     const isUnknownLocal = ['i don\'t know', 'i dont know', 'not sure', 'haven\'t worked with', 'have not worked', 'no idea', 'unsure'].some((p) => ansLower.includes(p)) && ansLower.length < 160;
+
+    let fallbackType: 'STRONG' | 'PARTIAL' | 'WEAK' | 'UNKNOWN' | 'OFF_TOPIC' | 'GIBBERISH' | 'EVASION' = 'STRONG';
+    let fallbackScore = 72;
+    let fallbackRisk: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' = 'MEDIUM';
+    let fallbackStrengths: string[] = ['Addressed core trade-off.'];
+    let fallbackMissing: string[] = ['Provide further empirical benchmarks.'];
+    let fallbackFeedback = 'Good technical response. Emphasize quantifiable metrics in your explanation.';
+    let fallbackFollowup = `Under 10x traffic increase, what bottleneck would emerge first in this architecture?`;
+
+    if (isGibberishLocal) {
+      fallbackType = 'GIBBERISH';
+      fallbackScore = 0;
+      fallbackRisk = 'CRITICAL';
+      fallbackStrengths = [];
+      fallbackMissing = ['Response consists of nonsensical characters with no intelligible technical content.', 'Failed to answer the interview question.'];
+      fallbackFeedback = `Your response ('${answerText.slice(0, 30)}...') is unintelligible gibberish (Score: 0.0/10). In a FAANG or top-tier technical interview at ${target.company}, submitting unparseable characters results in an immediate disqualification signal. Please provide a clear, coherent answer addressing the prompt.`;
+      fallbackFollowup = `Let's reset. Please provide a clear technical response to: ${currentQ.question}`;
+    } else if (isEvasionLocal) {
+      fallbackType = 'EVASION';
+      fallbackScore = 0;
+      fallbackRisk = 'CRITICAL';
+      fallbackStrengths = [];
+      fallbackMissing = ['Candidate evaded answering the interview question.', 'No technical substance provided.'];
+      fallbackFeedback = `You submitted an evasion or placeholder response (Score: 0.0/10). In an interview at ${target.company}, evading a question signals unreadiness. An interviewer expects you to walk through your thought process even if you don't have a complete solution.`;
+      fallbackFollowup = `Please provide an earnest technical attempt to answer: ${currentQ.question}`;
+    } else if (isCasualOffTopic) {
+      fallbackType = 'OFF_TOPIC';
+      fallbackScore = 0;
+      fallbackRisk = 'CRITICAL';
+      fallbackStrengths = [];
+      fallbackMissing = ['Response discussed completely unrelated casual topics.', 'Failed to address the interview prompt.'];
+      fallbackFeedback = `Your response discussed unrelated casual concepts rather than the interview subject. In technical interviews, directly addressing the prompt is essential (Score: 0.0/10).`;
+      fallbackFollowup = `Let's refocus on the original question: ${currentQ.question}`;
+    } else if (isUnknownLocal) {
+      fallbackType = 'UNKNOWN';
+      fallbackScore = 35;
+      fallbackRisk = 'HIGH';
+      fallbackStrengths = ['Demonstrated intellectual honesty and self-awareness.'];
+      fallbackMissing = ['Did not articulate internal mechanisms, latency numbers, or trade-offs.'];
+      fallbackFeedback = 'You were honest about your knowledge boundary. Here is the core concept breakdown:';
+      fallbackFollowup = 'How does an asynchronous queue prevent backend server crashes during traffic spikes?';
+    }
 
     const fallbackAnswer: CandidateAnswer = {
       questionId: currentQ.id,
       questionText: currentQ.question,
       answerText,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      answerType: isUnknownLocal ? 'UNKNOWN' : 'STRONG',
-      nextAction: isUnknownLocal ? 'TEACH_RETEST' : 'FOLLOW_UP',
+      answerType: fallbackType,
+      nextAction: isUnknownLocal ? 'TEACH_RETEST' : fallbackScore === 0 ? 'REDIRECT' : 'FOLLOW_UP',
       currentTopic: currentQ.category || 'Operating Systems',
       currentDifficulty: currentQ.depthLevel,
-      extractedClaims: isUnknownLocal ? [] : ['Architectural Decision', 'Performance Constraint'],
-      detectedConcepts: isUnknownLocal ? [] : ['System Design', 'Trade-offs'],
+      extractedClaims: fallbackScore > 0 && !isUnknownLocal ? ['Architectural Decision', 'Performance Constraint'] : [],
+      detectedConcepts: fallbackScore > 0 && !isUnknownLocal ? ['System Design', 'Trade-offs'] : [],
       isUnknown: isUnknownLocal,
       conceptExplanation: isUnknownLocal ? 'In distributed and high-performance systems, separating read and write pathways with asynchronous buffers prevents web workers from thread exhaustion under sudden burst traffic.' : undefined,
       conceptExample: isUnknownLocal ? 'FastAPI endpoints push incoming frames to a Redis/in-memory buffer, allowing worker processes to process batches asynchronously.' : undefined,
       retryQuestion: isUnknownLocal ? 'How does an asynchronous queue prevent backend server crashes during traffic spikes?' : undefined,
       evaluation: {
-        assessment: isUnknownLocal ? 'You were honest about your knowledge boundary. Knowledge coaching triggered.' : 'Evaluated candidate technical response.',
-        completenessScore: isUnknownLocal ? 35 : 72,
-        technicalAccuracy: isUnknownLocal ? 35 : 75,
-        depthDemonstrated: isUnknownLocal ? 1 : currentQ.depthLevel,
-        missingPoints: isUnknownLocal ? ['Did not articulate internal mechanisms, latency numbers, or trade-offs.'] : ['Provide further empirical benchmarks.'],
-        strengths: isUnknownLocal ? ['Demonstrated intellectual honesty and self-awareness.'] : ['Addressed core trade-off.'],
-        interviewerRisk: isUnknownLocal ? 'HIGH' : 'MEDIUM',
-        frankFeedback: isUnknownLocal ? 'You were honest about your knowledge boundary. Here is the core concept breakdown:' : 'Good technical response. Emphasize quantifiable metrics in your explanation.',
+        assessment: fallbackFeedback,
+        completenessScore: fallbackScore,
+        technicalAccuracy: fallbackScore,
+        depthDemonstrated: fallbackScore === 0 ? 1 : isUnknownLocal ? 1 : currentQ.depthLevel,
+        missingPoints: fallbackMissing,
+        strengths: fallbackStrengths,
+        interviewerRisk: fallbackRisk,
+        frankFeedback: fallbackFeedback,
       },
       predictedFollowUps: [
         {
-          question: isUnknownLocal ? 'How does an asynchronous queue prevent backend server crashes during traffic spikes?' : `Under 10x traffic increase, what bottleneck would emerge first in this architecture?`,
-          rationale: isUnknownLocal ? 'Knowledge coaching follow-up testing core comprehension.' : 'Probes high-scale robustness.',
+          question: fallbackFollowup,
+          rationale: fallbackScore === 0 ? 'Interviewer redirects candidate to provide a valid technical answer.' : isUnknownLocal ? 'Knowledge coaching follow-up testing core comprehension.' : 'Probes high-scale robustness.',
           depthLevel: isUnknownLocal ? currentQ.depthLevel : currentQ.depthLevel + 1,
-          probability: 0.9,
+          probability: 0.94,
         },
       ],
-      skillImpact: isUnknownLocal ? [
+      skillImpact: fallbackScore === 0 ? [
+        { skillName: 'Communication', delta: -5, reason: 'Submitted gibberish or off-topic answer during interview round.' },
+        { skillName: 'Technical Depth', delta: -4, reason: 'No technical substance provided.' }
+      ] : isUnknownLocal ? [
         { skillName: 'System Architecture', delta: -2, reason: 'Unfamiliar with core mechanism.' },
         { skillName: 'Communication', delta: +2, reason: 'Clear intellectual honesty.' }
       ] : [{ skillName: 'Technical Depth', delta: +2, reason: 'Evaluated response.' }],

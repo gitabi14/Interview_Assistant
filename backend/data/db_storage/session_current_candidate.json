@@ -374,8 +374,8 @@
     "raw_text_length": 1210,
     "text_preview": "\nSARAH JENKINS\nEmail: sarah.jenkins@gmail.com | Phone: 555-019-2834\nLocation: Seattle, WA | LinkedIn: linkedin.com/in/sarahjenkins\n\nPROFESSIONAL SUMMARY\nSenior Backend Engineer specialized in distributed Java microservices, Apache Kafka event streaming, and high-throughput PostgreSQL architectures.\n\nEDUCATION\nUniversity of Washington \u2014 B.S. in Computer Science (2020 \u2013 2024)\n\nTECHNICAL SKILLS\nLanguages: Java, SQL, Go, TypeScript\nFrameworks: Spring Boot, Spring Cloud, Hibernate, Express\nDeveloper "
   },
-  "created_at": "2026-10-14 14:57:25",
-  "updated_at": "2026-10-14 15:00:00",
+  "created_at": "2026-10-14 16:09:47",
+  "updated_at": "2026-10-14 16:11:19",
   "interview_plan": {
     "success": true,
     "company": "Amazon",
@@ -555,309 +555,119 @@
   },
   "answers": [
     {
-      "question_id": "q-1",
-      "question_text": "What is the difference between a process and a thread?",
-      "answer_text": "A process has its own memory space, while threads within the same process share memory.",
+      "question_id": "q-round-1",
+      "question_text": "Walk me through your background and the primary technical challenges you focused on in your engineering projects.",
+      "answer_text": "njcxncnbkjxz",
       "evaluation": {
         "success": true,
-        "question_id": "q-1",
+        "question_id": "q-round-1",
         "source_project": "General Technical",
-        "answer_type": "STRONG",
-        "score": 88,
-        "overall_score": 88,
-        "completeness_score": 88,
-        "technical_accuracy": 92,
-        "technical_correctness": 92,
-        "depth": 4,
-        "depth_demonstrated": "Advanced",
-        "specificity": 83,
-        "relevance": 85,
-        "evidence": 85,
-        "reasoning": 88,
-        "communication": 88,
-        "ownership": 85,
-        "is_unknown": false,
-        "current_topic": "Operating Systems",
-        "current_difficulty": 4,
-        "next_action": "FOLLOW_UP",
-        "reason": "Candidate correctly identified shared memory in threads; interviewer probes the core concurrency consequence (race conditions / data hazards).",
-        "strengths": [
-          "Accurately distinguished process address space isolation vs thread shared memory."
-        ],
-        "weaknesses": [
-          "Could mention OS scheduling overhead differences or context-switch costs."
-        ],
-        "missing_points": [
-          "Could mention OS scheduling overhead differences or context-switch costs."
-        ],
-        "missing_concepts": [
-          "Could mention OS scheduling overhead differences or context-switch costs."
-        ],
-        "detected_claims": [
-          "Adaptive Defense"
-        ],
-        "detected_concepts": [
-          "Memory Isolation",
-          "Shared Memory Space"
-        ],
-        "interviewer_risk": "LOW",
-        "frank_feedback": "Your response demonstrates strong understanding (88/100). Accurately distinguished process address space isolation vs thread shared memory. However: Could mention OS scheduling overhead differences or context-switch costs.",
-        "predicted_followups": [
-          {
-            "question": "What problem can occur when multiple threads access shared memory concurrently?",
-            "rationale": "Candidate correctly identified shared memory in threads; interviewer probes the core concurrency consequence (race conditions / data hazards).",
-            "depthLevel": 4,
-            "probability": 0.94
-          }
-        ],
-        "skill_impacts": [
-          {
-            "skillName": "Operating Systems",
-            "delta": 3,
-            "reason": "Demonstrated strong proficiency in Operating Systems."
-          }
-        ]
-      },
-      "timestamp": "2026-10-14 15:00:00"
-    },
-    {
-      "question_id": "q-2",
-      "question_text": "What problem can occur when multiple threads access shared memory concurrently?",
-      "answer_text": "A race condition.",
-      "evaluation": {
-        "success": true,
-        "question_id": "q-2",
-        "source_project": "General Technical",
-        "answer_type": "STRONG",
-        "score": 90,
-        "overall_score": 90,
-        "completeness_score": 90,
-        "technical_accuracy": 94,
-        "technical_correctness": 94,
-        "depth": 5,
-        "depth_demonstrated": "Advanced",
-        "specificity": 85,
-        "relevance": 85,
-        "evidence": 85,
-        "reasoning": 90,
-        "communication": 72,
-        "ownership": 85,
-        "is_unknown": false,
-        "current_topic": "Operating Systems",
-        "current_difficulty": 5,
-        "next_action": "FOLLOW_UP",
-        "reason": "Candidate accurately identified race conditions; interviewer now asks for synchronization and concurrency control mechanisms.",
-        "strengths": [
-          "Directly identified race conditions as the core shared-memory concurrency hazard."
-        ],
-        "weaknesses": [
-          "Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving)."
-        ],
-        "missing_points": [
-          "Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving)."
-        ],
-        "missing_concepts": [
-          "Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving)."
-        ],
-        "detected_claims": [
-          "Adaptive Defense"
-        ],
-        "detected_concepts": [
-          "Race Conditions",
-          "Thread Safety"
-        ],
-        "interviewer_risk": "LOW",
-        "frank_feedback": "Your response demonstrates strong understanding (90/100). Directly identified race conditions as the core shared-memory concurrency hazard. However: Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving).",
-        "predicted_followups": [
-          {
-            "question": "How would you prevent a race condition?",
-            "rationale": "Candidate accurately identified race conditions; interviewer now asks for synchronization and concurrency control mechanisms.",
-            "depthLevel": 5,
-            "probability": 0.94
-          }
-        ],
-        "skill_impacts": [
-          {
-            "skillName": "Operating Systems",
-            "delta": 3,
-            "reason": "Demonstrated strong proficiency in Operating Systems."
-          }
-        ]
-      },
-      "timestamp": "2026-10-14 15:00:00"
-    },
-    {
-      "question_id": "q-3",
-      "question_text": "How would you prevent a race condition?",
-      "answer_text": "Using locks or synchronization.",
-      "evaluation": {
-        "success": true,
-        "question_id": "q-3",
-        "source_project": "General Technical",
-        "answer_type": "STRONG",
-        "score": 92,
-        "overall_score": 92,
-        "completeness_score": 92,
-        "technical_accuracy": 96,
-        "technical_correctness": 96,
-        "depth": 6,
-        "depth_demonstrated": "Advanced",
-        "specificity": 87,
-        "relevance": 85,
-        "evidence": 85,
-        "reasoning": 92,
-        "communication": 72,
-        "ownership": 85,
-        "is_unknown": false,
-        "current_topic": "Operating Systems",
-        "current_difficulty": 6,
-        "next_action": "DEEP_PROBE",
-        "reason": "Candidate correctly cited locks/synchronization; interviewer probes deeper trade-offs such as contention overhead, deadlocks, and reduced throughput.",
-        "strengths": [
-          "Articulated mutual exclusion primitives (locks, mutexes, synchronization)."
-        ],
-        "weaknesses": [
-          "Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking."
-        ],
-        "missing_points": [
-          "Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking."
-        ],
-        "missing_concepts": [
-          "Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking."
-        ],
-        "detected_claims": [
-          "Adaptive Defense"
-        ],
-        "detected_concepts": [
-          "Mutual Exclusion",
-          "Locking Primitives",
-          "Synchronization"
-        ],
-        "interviewer_risk": "LOW",
-        "frank_feedback": "Your response demonstrates strong understanding (92/100). Articulated mutual exclusion primitives (locks, mutexes, synchronization). However: Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking.",
-        "predicted_followups": [
-          {
-            "question": "What trade-off can excessive locking introduce?",
-            "rationale": "Candidate correctly cited locks/synchronization; interviewer probes deeper trade-offs such as contention overhead, deadlocks, and reduced throughput.",
-            "depthLevel": 6,
-            "probability": 0.94
-          }
-        ],
-        "skill_impacts": [
-          {
-            "skillName": "Operating Systems",
-            "delta": 3,
-            "reason": "Demonstrated strong proficiency in Operating Systems."
-          }
-        ]
-      },
-      "timestamp": "2026-10-14 15:00:00"
-    },
-    {
-      "question_id": "q-idk",
-      "question_text": "How does TensorRT perform FP16 quantization on edge hardware?",
-      "answer_text": "I don't know.",
-      "evaluation": {
-        "success": true,
-        "question_id": "q-idk",
-        "source_project": "Traffix",
-        "answer_type": "UNKNOWN",
-        "score": 35,
-        "overall_score": 35,
-        "completeness_score": 35,
-        "technical_accuracy": 35,
-        "technical_correctness": 35,
+        "answer_type": "GIBBERISH",
+        "score": 0,
+        "overall_score": 0,
+        "completeness_score": 0,
+        "technical_accuracy": 0,
+        "technical_correctness": 0,
         "depth": 1,
-        "depth_demonstrated": "Basic (Knowledge Coaching Triggered)",
-        "strengths": [
-          "Demonstrated intellectual honesty and self-awareness."
-        ],
+        "depth_demonstrated": "None (Gibberish Input)",
+        "specificity": 0,
+        "relevance": 0,
+        "evidence": 0,
+        "reasoning": 0,
+        "communication": 0,
+        "ownership": 0,
+        "is_unknown": false,
+        "current_topic": "System Architecture",
+        "current_difficulty": 1,
+        "next_action": "REDIRECT",
+        "reason": "Candidate submitted nonsensical characters or random keystrokes. In a real technical interview, this is an immediate failing signal.",
+        "strengths": [],
         "weaknesses": [
-          "Did not articulate internal mechanisms, latency numbers, or trade-offs."
+          "Response consists of nonsensical characters or keyboard mashing with no recognizable English or technical words.",
+          "Failed to provide any explanation of engineering background, projects, or technical decisions."
         ],
         "missing_points": [
-          "Did not articulate internal mechanisms, latency numbers, or trade-offs."
+          "A coherent, professionally articulated response answering the question.",
+          "Concrete technical explanation, design decisions, and engineering trade-offs."
         ],
         "missing_concepts": [
-          "Core Architectural Mechanism",
-          "Quantitative Trade-offs"
+          "Professional Communication",
+          "Technical Articulation"
         ],
-        "detected_concepts": [],
         "detected_claims": [],
-        "current_topic": "Edge Machine Learning",
-        "current_difficulty": 3,
-        "next_action": "TEACH_RETEST",
-        "reason": "Candidate honestly acknowledged knowledge boundary; teaching core concept before retesting.",
-        "interviewer_risk": "HIGH",
-        "frank_feedback": "You were honest about your knowledge boundary. Here is a clear 2-sentence breakdown of the core concept and how you can approach it:",
-        "is_unknown": true,
-        "concept_explanation": "In distributed systems, separating read and write pathways using asynchronous message queues prevents web workers from thread exhaustion under sudden burst traffic.",
-        "concept_example": "FastAPI endpoints push incoming telemetry to a Redis buffer, allowing worker processes to process batches asynchronously.",
-        "retry_question": "How does an asynchronous queue prevent backend server crashes during traffic spikes?",
+        "detected_concepts": [],
+        "interviewer_risk": "CRITICAL",
+        "frank_feedback": "Your response ('njcxncnbkjxz') consists of nonsensical characters with no intelligible technical content (Score: 0.0/10). In a FAANG or top-tier technical interview at Microsoft, submitting unparseable characters results in an immediate disqualification signal. Please provide a clear, coherent answer addressing the prompt.",
         "predicted_followups": [
           {
-            "question": "How does an asynchronous queue prevent backend server crashes during traffic spikes?",
-            "rationale": "Knowledge coaching follow-up testing core comprehension after explanation.",
-            "depthLevel": 4,
-            "probability": 0.95
+            "question": "Let's reset. Please provide a clear, coherent technical answer to the question: Walk me through your background and the primary technical challenges you focused on in your engineering projects.",
+            "rationale": "Interviewer resets round after candidate submitted gibberish.",
+            "depthLevel": 3,
+            "probability": 0.98
           }
         ],
         "skill_impacts": [
           {
-            "skillName": "System Architecture",
-            "delta": -2,
-            "reason": "Unfamiliar with core mechanism."
+            "skillName": "Communication",
+            "delta": -5,
+            "reason": "Submitted nonsensical gibberish during interview round."
           },
           {
-            "skillName": "Communication",
-            "delta": 2,
-            "reason": "Clear intellectual honesty."
+            "skillName": "Engineering",
+            "delta": -5,
+            "reason": "Failed to engage with the technical prompt."
           }
         ]
       },
-      "timestamp": "2026-10-14 15:00:00"
+      "timestamp": "2026-10-14 16:11:06"
     },
     {
-      "question_id": "q-off",
-      "question_text": "What is the difference between a process and a thread?",
-      "answer_text": "TCP uses a three-way handshake with SYN, SYN-ACK, and ACK to establish a reliable connection.",
+      "question_id": "q-round-1",
+      "question_text": "Walk me through your background and the primary technical challenges you focused on in your engineering projects.",
+      "answer_text": "I really love eating pizza and going shopping",
       "evaluation": {
         "success": true,
-        "question_id": "q-off",
+        "question_id": "q-round-1",
         "source_project": "General Technical",
         "answer_type": "OFF_TOPIC",
-        "score": 40,
-        "overall_score": 40,
-        "completeness_score": 40,
-        "technical_accuracy": 40,
-        "technical_correctness": 40,
-        "depth": 3,
-        "depth_demonstrated": "Basic",
-        "strengths": [
-          "Communicated clearly, but answered an unrelated topic."
-        ],
-        "weaknesses": [
-          "Answer addressed an unrelated domain and did not respond to the interviewer's question."
-        ],
-        "missing_points": [
-          "Did not answer the question regarding Operating Systems."
-        ],
-        "missing_concepts": [
-          "Operating Systems"
-        ],
-        "detected_concepts": [],
-        "detected_claims": [],
-        "current_topic": "Operating Systems",
+        "score": 0,
+        "overall_score": 0,
+        "completeness_score": 0,
+        "technical_accuracy": 0,
+        "technical_correctness": 0,
+        "depth": 1,
+        "depth_demonstrated": "None (Off-Topic)",
+        "specificity": 10,
+        "relevance": 0,
+        "evidence": 0,
+        "reasoning": 0,
+        "communication": 15,
+        "ownership": 0,
+        "is_unknown": false,
+        "current_topic": "System Architecture",
         "current_difficulty": 3,
         "next_action": "REDIRECT",
-        "reason": "Candidate answered with off-topic concepts; redirecting back to Operating Systems.",
-        "interviewer_risk": "HIGH",
-        "frank_feedback": "Your response discussed unrelated concepts rather than Operating Systems. In technical interviews, directly addressing the prompt is essential.",
-        "is_unknown": false,
+        "reason": "Candidate answered with off-topic concepts; redirecting back to System Architecture.",
+        "strengths": [],
+        "weaknesses": [
+          "Response discussed unrelated concepts rather than answering the question on System Architecture.",
+          "In technical interviews, answering off-topic signals poor listening or lack of domain competence."
+        ],
+        "missing_points": [
+          "Did not answer the question regarding System Architecture."
+        ],
+        "missing_concepts": [
+          "System Architecture",
+          "Domain Relevance"
+        ],
+        "detected_claims": [],
+        "detected_concepts": [],
+        "interviewer_risk": "CRITICAL",
+        "frank_feedback": "Your response discussed unrelated concepts rather than System Architecture. In technical interviews, directly addressing the prompt is essential (Score: 0.0/10).",
         "predicted_followups": [
           {
-            "question": "Let's refocus on the original question: What is the difference between a process and a thread?",
-            "rationale": "Interviewer redirects candidate back to the target topic: Operating Systems.",
+            "question": "Let's refocus on the original question: Walk me through your background and the primary technical challenges you focused on in your engineering projects.",
+            "rationale": "Interviewer redirects candidate back to the target topic: System Architecture.",
             "depthLevel": 3,
             "probability": 0.95
           }
@@ -865,147 +675,17 @@
         "skill_impacts": [
           {
             "skillName": "Communication",
-            "delta": -1,
-            "reason": "Off-topic answer during technical round."
-          }
-        ]
-      },
-      "timestamp": "2026-10-14 15:00:00"
-    },
-    {
-      "question_id": "q-test-a",
-      "question_text": "Why did you choose YOLOv8 for vehicle detection in Traffix?",
-      "answer_text": "Because YOLO was faster.",
-      "evaluation": {
-        "success": true,
-        "question_id": "q-test-a",
-        "source_project": "Traffix \u2014 Urban Traffic Management System",
-        "answer_type": "PARTIAL",
-        "score": 60,
-        "overall_score": 60,
-        "completeness_score": 60,
-        "technical_accuracy": 64,
-        "technical_correctness": 64,
-        "depth": 3,
-        "depth_demonstrated": "Basic",
-        "specificity": 55,
-        "relevance": 85,
-        "evidence": 55,
-        "reasoning": 60,
-        "communication": 72,
-        "ownership": 75,
-        "is_unknown": false,
-        "current_topic": "Computer Vision / Edge ML",
-        "current_difficulty": 3,
-        "next_action": "CLARIFY",
-        "reason": "Candidate mentioned YOLO was faster; interviewer must probe measurement methodology and hardware trade-offs.",
-        "strengths": [
-          "Articulated clear technical motivation."
-        ],
-        "weaknesses": [
-          "Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
-          "Response was brief; lacked low-level profiling details."
-        ],
-        "missing_points": [
-          "Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
-          "Response was brief; lacked low-level profiling details."
-        ],
-        "missing_concepts": [
-          "Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
-          "Response was brief; lacked low-level profiling details."
-        ],
-        "detected_claims": [],
-        "detected_concepts": [
-          "YOLO",
-          "Latency Advantage"
-        ],
-        "interviewer_risk": "HIGH",
-        "frank_feedback": "Your response demonstrates partial understanding (60/100). Articulated clear technical motivation. However: Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
-        "predicted_followups": [
-          {
-            "question": "How did you empirically measure that performance advantage (e.g. latency benchmarking, profiling tools), and what were the exact memory trade-offs?",
-            "rationale": "Candidate mentioned YOLO was faster; interviewer must probe measurement methodology and hardware trade-offs.",
-            "depthLevel": 3,
-            "probability": 0.94
-          }
-        ],
-        "skill_impacts": [
+            "delta": -4,
+            "reason": "Provided completely off-topic answer during interview."
+          },
           {
             "skillName": "Engineering",
-            "delta": 1,
-            "reason": "Demonstrated partial proficiency in Computer Vision / Edge ML."
+            "delta": -4,
+            "reason": "Failed to address System Architecture."
           }
         ]
       },
-      "timestamp": "2026-10-14 15:00:00"
-    },
-    {
-      "question_id": "q-test-b",
-      "question_text": "Why did you choose YOLOv8 for vehicle detection in Traffix?",
-      "answer_text": "I chose YOLOv8 because it is an anchor-free single-stage detector delivering 45 FPS with sub-40ms latency, whereas Faster R-CNN uses a two-stage RPN requiring ~120ms.",
-      "evaluation": {
-        "success": true,
-        "question_id": "q-test-b",
-        "source_project": "Traffix \u2014 Urban Traffic Management System",
-        "answer_type": "STRONG",
-        "score": 94,
-        "overall_score": 94,
-        "completeness_score": 94,
-        "technical_accuracy": 98,
-        "technical_correctness": 98,
-        "depth": 4,
-        "depth_demonstrated": "Advanced",
-        "specificity": 99,
-        "relevance": 85,
-        "evidence": 85,
-        "reasoning": 94,
-        "communication": 88,
-        "ownership": 85,
-        "is_unknown": false,
-        "current_topic": "Computer Vision / Edge ML",
-        "current_difficulty": 4,
-        "next_action": "DEEP_PROBE",
-        "reason": "Candidate defended YOLOv8 with exact benchmarks; interviewer advances to multi-stream backpressure and VRAM concurrency.",
-        "strengths": [
-          "Precise quantitative SLA (sub-50ms vs 120ms)",
-          "Explicit single-stage anchor-free architectural comparison."
-        ],
-        "weaknesses": [
-          "Could discuss zero-copy frame tensors on PCIe bus."
-        ],
-        "missing_points": [
-          "Could discuss zero-copy frame tensors on PCIe bus."
-        ],
-        "missing_concepts": [
-          "Could discuss zero-copy frame tensors on PCIe bus."
-        ],
-        "detected_claims": [
-          "Adaptive Defense"
-        ],
-        "detected_concepts": [
-          "YOLOv8 Edge Inference",
-          "Single-Stage vs Two-Stage RPN",
-          "Hardware Memory SLA"
-        ],
-        "interviewer_risk": "LOW",
-        "frank_feedback": "Your response demonstrates strong understanding (94/100). Precise quantitative SLA (sub-50ms vs 120ms) However: Could discuss zero-copy frame tensors on PCIe bus.",
-        "predicted_followups": [
-          {
-            "question": "When processing 4 concurrent 1080p camera feeds at 30 FPS, how did you prevent GPU VRAM saturation and frame queue backpressure?",
-            "rationale": "Candidate defended YOLOv8 with exact benchmarks; interviewer advances to multi-stream backpressure and VRAM concurrency.",
-            "depthLevel": 4,
-            "probability": 0.94
-          }
-        ],
-        "skill_impacts": [
-          {
-            "skillName": "Engineering",
-            "delta": 3,
-            "reason": "Demonstrated strong proficiency in Computer Vision / Edge ML."
-          }
-        ]
-      },
-      "timestamp": "2026-10-14 15:00:00"
+      "timestamp": "2026-10-14 16:11:19"
     }
   ]
 }

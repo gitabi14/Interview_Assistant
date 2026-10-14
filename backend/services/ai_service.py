@@ -72,6 +72,137 @@ class MockProvider(AIProvider):
     def generate_json(self, prompt: str, schema: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         return {"status": "ok", "message": "Processed mock prompt"}
 
+COMMON_TECH_ACRONYMS = {
+    'jwt', 'sql', 'aws', 'css', 'html', 'api', 'rpc', 'db', 'io', 'os', 'sdk', 'k8s',
+    'tcp', 'udp', 'ssl', 'tls', 'cpu', 'gpu', 'ram', 'fps', 'sla', 'tps', 'p99', 'gis',
+    'rag', 'llm', 'fp16', 'rpn', 'ip', 'npm', 'git', 'cli', 'gui', 'crud', 'rest', 'json',
+    'yaml', 'xml', 'ci', 'cd', 'cicd', 'mq', 'mqtt', 'grpc', 'ssh', 'http', 'https', 'dns'
+}
+
+EVASION_PATTERNS = {
+    'skip', 'pass', 'next', 'next question', 'skip question', 'dont care', "don't care",
+    'whatever', 'nothing', 'none', 'test', 'testing', 'hello', 'hi', 'hey', 'ok', 'okay',
+    'cool', 'fine', 'yeah', 'yes', 'no', 'nope', 'nah', 'idk', "i don't care",
+    'no answer', 'i dont want to answer', "i don't want to answer", 'can you repeat',
+    'repeat question', 'bye', 'exit', 'quit'
+}
+
+OFF_TOPIC_CASUAL_KEYWORDS = {
+    'pizza', 'burger', 'ice cream', 'sandwich', 'pasta', 'dinner', 'lunch', 'breakfast',
+    'football', 'soccer', 'basketball', 'cricket', 'baseball', 'tennis',
+    'weather', 'sunny', 'raining', 'movie', 'cinema', 'song', 'music',
+    'sleep', 'sleeping', 'tired', 'party', 'weekend', 'dog', 'cat', 'puppy', 'kitten',
+    'joke', 'funny', 'haha', 'lmao', 'rofl', 'shopping', 'girlfriend', 'boyfriend'
+}
+
+INTRO_TECH_SIGNALS = {
+    'engineer', 'developer', 'software', 'project', 'system', 'background', 'tech',
+    'code', 'coding', 'program', 'build', 'built', 'develop', 'stack', 'work', 'experience',
+    'student', 'study', 'university', 'college', 'degree', 'backend', 'frontend',
+    'fullstack', 'data', 'ml', 'ai', 'cloud', 'architecture', 'api', 'framework',
+    'python', 'java', 'c++', 'javascript', 'typescript', 'react', 'node', 'sql',
+    'docker', 'aws', 'azure', 'git', 'traffix', 'faiss', 'challenge', 'solved',
+    'intern', 'bannari', 'b.e', 'be', 'cs', 'cse', 'it'
+}
+
+def is_single_word_gibberish(w: str) -> bool:
+    clean_w = w.lower()
+    # Strip numbers and units like 120ms, 30fps, 500k, 10gb
+    stripped = re.sub(r'^\d+(?:ms|fps|kb|mb|gb|tb|rps|tps|hz|ghz|mhz|k|m|b|s|sec|min|px|%|x)?$', '', clean_w)
+    if not stripped or stripped in COMMON_TECH_ACRONYMS or stripped.isdigit():
+        return False
+    letters = re.findall(r'[a-z]', stripped)
+    if not letters:
+        return False
+    word_str = ''.join(letters)
+    if word_str in COMMON_TECH_ACRONYMS:
+        return False
+    # Check 5+ consecutive consonants
+    if re.search(r'[^aeiouy0-9]{5,}', word_str) and word_str not in ['postgresql', 'strengths']:
+        return True
+    # If length >= 4 and no vowels
+    if len(word_str) >= 4 and not any(c in 'aeiouy' for c in word_str):
+        return True
+    return False
+
+def is_gibberish_input(text: str) -> bool:
+    clean = text.strip().lower()
+    if not clean or len(clean) < 2:
+        return True
+    
+    # 1. Repeated character sequences: 'aaaaaa', 'zzzzzz'
+    if re.search(r'(.)\1{4,}', clean):
+        return True
+
+    # 1b. Repeated multi-character patterns: 'hahahaha', 'abababab'
+    if re.search(r'(.{2,3})\1{3,}', clean):
+        return True
+
+    # 2. Keyboard smash home rows or repeated patterns: 'asdfasdf', 'qwerqwer'
+    if any(smash in clean for smash in ['asdfgh', 'zxcvbn', 'qwertyui', 'asdfasdf', 'qwerqwer', 'lkjhgf']):
+        return True
+
+    words = re.findall(r'[a-z0-9]+', clean)
+    if not words:
+        return True
+
+    alpha_chars = re.findall(r'[a-z]', clean)
+    if len(alpha_chars) < 2:
+        return True
+
+    # 3. Analyze words in the answer:
+    gibberish_words = [w for w in words if is_single_word_gibberish(w)]
+    if len(words) <= 3:
+        if len(gibberish_words) > 0:
+            return True
+    else:
+        if len(gibberish_words) / len(words) >= 0.35:
+            return True
+
+    # 4. Total vowel-to-consonant ratio check across entire response:
+    vowel_count = sum(1 for c in alpha_chars if c in 'aeiouy')
+    if len(alpha_chars) >= 8 and vowel_count == 0:
+        return True
+
+    if len(alpha_chars) >= 12 and (vowel_count / len(alpha_chars)) < 0.10:
+        if not any(ac in clean for ac in COMMON_TECH_ACRONYMS):
+            return True
+
+    return False
+
+def is_evasion_input(text: str) -> bool:
+    clean = text.strip().lower()
+    clean_nopunct = re.sub(r'[^\w\s]', '', clean).strip()
+    return clean in EVASION_PATTERNS or clean_nopunct in EVASION_PATTERNS
+
+def is_off_topic_input(ans_text: str, q_text: str, topic: str) -> bool:
+    ans_clean = ans_text.strip().lower()
+    q_clean = q_text.strip().lower()
+
+    # 1. Casual off-topic chatter (e.g., pizza, soccer, movie, sleeping)
+    words = set(re.findall(r'[a-z]+', ans_clean))
+    has_casual = any(w in OFF_TOPIC_CASUAL_KEYWORDS for w in words)
+    has_tech = any(w in COMMON_TECH_ACRONYMS or w in INTRO_TECH_SIGNALS for w in words)
+    if has_casual and not has_tech:
+        return True
+
+    # 2. Intro Question Check: Candidate asked about engineering background & projects
+    if any(w in q_clean for w in ["background", "primary technical challenges", "engineering projects", "walk me through your"]):
+        # If length is under 150 chars and has zero engineering/project/tech signals:
+        if not any(sig in ans_clean for sig in INTRO_TECH_SIGNALS) and not any(ac in ans_clean for ac in COMMON_TECH_ACRONYMS):
+            return True
+
+    # 3. Domain Mismatch:
+    has_os_relevance = any(w in ans_clean for w in ["process", "thread", "memory", "share", "space", "lock", "concur", "mutex", "heap", "stack", "isolation", "address", "context switch", "kernel", "atomic", "race"])
+    is_network_or_frontend = any(w in ans_clean for w in ["tcp", "handshake", "syn", "ack", "three-way", "css", "flexbox", "html", "grid", "tailwind", "oauth"])
+    if any(w in q_clean for w in ["process", "thread", "memory", "concurrency", "lock", "os"]) and is_network_or_frontend and not has_os_relevance:
+        return True
+
+    if any(w in q_clean for w in ["yolo", "detection", "traffix", "fps"]) and is_network_or_frontend and not any(w in ans_clean for w in ["yolo", "model", "frame", "camera", "latency", "detection", "edge"]):
+        return True
+
+    return False
+
 class AIService:
     def __init__(self):
         self.provider_name = os.getenv("AI_PROVIDER", "openai").lower()
@@ -450,6 +581,166 @@ Raw Resume:
                                  else "Database & Storage" if any(w in q_text_clean for w in ["dbms", "index", "sql", "b-tree", "query", "postgres", "mongo"])
                                  else "System Architecture")
 
+        # --- STEP 0: STRICT NON-NEGOTIABLE INTERVIEW INTEGRITY CHECKS ---
+        # 1. Check Gibberish / Keystroke Mashing (e.g. 'njcxncnbkjxz', 'asdfghjk', non-words)
+        if is_gibberish_input(actual_ans_text):
+            latency = int((time.time() - start_time) * 1000) + 12
+            redirect_q = f"Let's reset. Please provide a clear, coherent technical answer to the question: {actual_q_text}"
+            short_ans = actual_ans_text[:35] + ("..." if len(actual_ans_text) > 35 else "")
+            return {
+                "success": True,
+                "question_id": actual_q_id,
+                "source_project": "General Technical",
+                "answer_type": "GIBBERISH",
+                "score": 0,
+                "overall_score": 0,
+                "completeness_score": 0,
+                "technical_accuracy": 0,
+                "technical_correctness": 0,
+                "depth": 1,
+                "depth_demonstrated": "None (Gibberish Input)",
+                "specificity": 0,
+                "relevance": 0,
+                "evidence": 0,
+                "reasoning": 0,
+                "communication": 0,
+                "ownership": 0,
+                "is_unknown": False,
+                "current_topic": topic,
+                "current_difficulty": 1,
+                "next_action": "REDIRECT",
+                "reason": "Candidate submitted nonsensical characters or random keystrokes. In a real technical interview, this is an immediate failing signal.",
+                "strengths": [],
+                "weaknesses": [
+                    "Response consists of nonsensical characters or keyboard mashing with no recognizable English or technical words.",
+                    "Failed to provide any explanation of engineering background, projects, or technical decisions."
+                ],
+                "missing_points": [
+                    "A coherent, professionally articulated response answering the question.",
+                    "Concrete technical explanation, design decisions, and engineering trade-offs."
+                ],
+                "missing_concepts": ["Professional Communication", "Technical Articulation"],
+                "detected_claims": [],
+                "detected_concepts": [],
+                "interviewer_risk": "CRITICAL",
+                "frank_feedback": f"Your response ('{short_ans}') consists of nonsensical characters with no intelligible technical content (Score: 0.0/10). In a FAANG or top-tier technical interview at {company}, submitting unparseable characters results in an immediate disqualification signal. Please provide a clear, coherent answer addressing the prompt.",
+                "predicted_followups": [{
+                    "question": redirect_q,
+                    "rationale": "Interviewer resets round after candidate submitted gibberish.",
+                    "depthLevel": current_depth,
+                    "probability": 0.98
+                }],
+                "skill_impacts": [
+                    {"skillName": "Communication", "delta": -5, "reason": "Submitted nonsensical gibberish during interview round."},
+                    {"skillName": "Engineering", "delta": -5, "reason": "Failed to engage with the technical prompt."}
+                ]
+            }
+
+        # 2. Check Evasion / Non-Responsive Placeholder (e.g. 'skip', 'pass', 'next', 'idk')
+        if is_evasion_input(actual_ans_text):
+            latency = int((time.time() - start_time) * 1000) + 12
+            redirect_q = f"Please provide an earnest technical attempt to answer: {actual_q_text}"
+            return {
+                "success": True,
+                "question_id": actual_q_id,
+                "source_project": "General Technical",
+                "answer_type": "EVASION",
+                "score": 0,
+                "overall_score": 0,
+                "completeness_score": 0,
+                "technical_accuracy": 0,
+                "technical_correctness": 0,
+                "depth": 1,
+                "depth_demonstrated": "None (Evasion)",
+                "specificity": 0,
+                "relevance": 0,
+                "evidence": 0,
+                "reasoning": 0,
+                "communication": 10,
+                "ownership": 0,
+                "is_unknown": False,
+                "current_topic": topic,
+                "current_difficulty": 1,
+                "next_action": "REDIRECT",
+                "reason": "Candidate provided a non-responsive placeholder or attempted to evade the interview question.",
+                "strengths": [],
+                "weaknesses": [
+                    "Candidate evaded the technical question with a placeholder response.",
+                    "Did not attempt to structure an architectural or technical explanation."
+                ],
+                "missing_points": [
+                    "An earnest, structured attempt to answer the question asked.",
+                    "Discussion of technologies, trade-offs, or engineering principles."
+                ],
+                "missing_concepts": ["Technical Ownership", "Professional Engagement"],
+                "detected_claims": [],
+                "detected_concepts": [],
+                "interviewer_risk": "CRITICAL",
+                "frank_feedback": f"You submitted an evasion or placeholder response (Score: 0.0/10). In an interview at {company}, evading a question signals unreadiness. An interviewer expects you to walk through your thought process even if you don't have a complete solution.",
+                "predicted_followups": [{
+                    "question": redirect_q,
+                    "rationale": "Interviewer redirects candidate to provide an earnest response instead of evading.",
+                    "depthLevel": current_depth,
+                    "probability": 0.98
+                }],
+                "skill_impacts": [
+                    {"skillName": "Communication", "delta": -4, "reason": "Evaded interview question with placeholder."},
+                    {"skillName": "Engineering", "delta": -4, "reason": "Declined to answer technical question."}
+                ]
+            }
+
+        # 3. Check Off-Topic / Irrelevant Commentary
+        if is_off_topic_input(actual_ans_text, actual_q_text, topic):
+            latency = int((time.time() - start_time) * 1000) + 12
+            redirect_q = f"Let's refocus on the original question: {actual_q_text}"
+            return {
+                "success": True,
+                "question_id": actual_q_id,
+                "source_project": "General Technical",
+                "answer_type": "OFF_TOPIC",
+                "score": 0,
+                "overall_score": 0,
+                "completeness_score": 0,
+                "technical_accuracy": 0,
+                "technical_correctness": 0,
+                "depth": 1,
+                "depth_demonstrated": "None (Off-Topic)",
+                "specificity": 10,
+                "relevance": 0,
+                "evidence": 0,
+                "reasoning": 0,
+                "communication": 15,
+                "ownership": 0,
+                "is_unknown": False,
+                "current_topic": topic,
+                "current_difficulty": current_depth,
+                "next_action": "REDIRECT",
+                "reason": f"Candidate answered with off-topic concepts; redirecting back to {topic}.",
+                "strengths": [],
+                "weaknesses": [
+                    f"Response discussed unrelated concepts rather than answering the question on {topic}.",
+                    "In technical interviews, answering off-topic signals poor listening or lack of domain competence."
+                ],
+                "missing_points": [
+                    f"Did not answer the question regarding {topic}."
+                ],
+                "missing_concepts": [topic, "Domain Relevance"],
+                "detected_claims": [],
+                "detected_concepts": [],
+                "interviewer_risk": "CRITICAL",
+                "frank_feedback": f"Your response discussed unrelated concepts rather than {topic}. In technical interviews, directly addressing the prompt is essential (Score: 0.0/10).",
+                "predicted_followups": [{
+                    "question": redirect_q,
+                    "rationale": f"Interviewer redirects candidate back to the target topic: {topic}.",
+                    "depthLevel": current_depth,
+                    "probability": 0.95
+                }],
+                "skill_impacts": [
+                    {"skillName": "Communication", "delta": -4, "reason": "Provided completely off-topic answer during interview."},
+                    {"skillName": "Engineering", "delta": -4, "reason": f"Failed to address {topic}."}
+                ]
+            }
+
         # 1. LLM Evaluation (if OpenAI/Gemini is live)
         if self.status == "LIVE_AI":
             try:
@@ -461,7 +752,7 @@ Raw Resume:
 You are PrepForge AI, a Principal Engineer conducting a technical interview for {role} at {company}.
 Evaluate the candidate's answer adaptively with strict JSON output matching this schema:
 {{
-  "answer_type": "STRONG" | "PARTIAL" | "WEAK" | "UNKNOWN" | "OFF_TOPIC",
+  "answer_type": "STRONG" | "PARTIAL" | "WEAK" | "UNKNOWN" | "OFF_TOPIC" | "GIBBERISH" | "EVASION",
   "score": <0-100 integer>,
   "technical_correctness": <0-100 integer>,
   "depth": <1-7 integer>,
@@ -483,11 +774,14 @@ Evaluate the candidate's answer adaptively with strict JSON output matching this
 }}
 
 Rules:
-1. If candidate says "I don't know" or has no idea: classify as UNKNOWN, detected_concepts MUST BE [], set next_action to TEACH_RETEST.
-2. If candidate talks about an unrelated domain (e.g., asked about processes but answered about TCP): classify as OFF_TOPIC, set next_action to REDIRECT.
-3. If answer is strong: increase depth, ask a deeper scenario/trade-off follow-up on the SAME concept.
-4. If answer is partial/weak: probe the exact missing point on the same topic.
-5. Follow-up question MUST be logically grounded in the candidate's actual answer!
+1. GIBBERISH / RANDOM CHARACTERS (e.g. 'njcxncnbkjxz', 'asdfgh'): classify as GIBBERISH, score: 0, strengths: [], interviewer_risk: "CRITICAL", frank_feedback: "Your response is nonsensical gibberish (Score: 0.0/10). In a FAANG/top-tier interview, this is an immediate disqualification signal."
+2. OFF-TOPIC / IRRELEVANT (unrelated casual chatter, food, sports, non-technical): classify as OFF_TOPIC, score: 0 to 5 max, strengths: [], interviewer_risk: "CRITICAL", next_action: REDIRECT.
+3. EVASION / SKIP ('skip', 'pass', 'idk', 'next'): classify as EVASION, score: 0, strengths: [], interviewer_risk: "CRITICAL".
+4. If candidate says "I don't know" or has no idea: classify as UNKNOWN, score: 30-35, detected_concepts: [], next_action to TEACH_RETEST.
+5. NEVER provide fake praise or invent strengths like 'Addressed the subject briefly' when the response contains no meaningful technical substance!
+6. If answer is strong: increase depth, ask a deeper scenario/trade-off follow-up on the SAME concept.
+7. If answer is partial/weak: probe the exact missing point on the same topic.
+8. Follow-up question MUST be logically grounded in the candidate's actual answer!
 
 Interview History:
 {hist_summary or 'Round 1'}
@@ -588,55 +882,7 @@ Current Depth: {current_depth}
                 ]
             }
 
-        # Check B: OFF-TOPIC Answer
-        is_off_topic = False
-        has_os_relevance = any(w in ans_clean for w in ["process", "thread", "memory", "share", "space", "lock", "concur", "mutex", "heap", "stack", "isolation", "address", "context switch", "kernel"])
-        is_network_or_frontend = any(w in ans_clean for w in ["tcp", "handshake", "syn", "ack", "three-way", "css", "flexbox", "html", "grid", "tailwind", "oauth"])
-
-        if any(w in q_text_clean for w in ["process", "thread", "memory", "concurrency", "lock", "os"]) and is_network_or_frontend and not has_os_relevance:
-            is_off_topic = True
-        elif any(w in q_text_clean for w in ["yolo", "detection", "traffix", "fps"]) and is_network_or_frontend and not any(w in ans_clean for w in ["yolo", "model", "frame", "camera", "latency", "detection", "edge"]):
-            is_off_topic = True
-
-        if is_off_topic:
-            redirect_q = f"Let's refocus on the original question: {actual_q_text}"
-            return {
-                "success": True,
-                "question_id": actual_q_id,
-                "source_project": "General Technical",
-                "answer_type": "OFF_TOPIC",
-                "score": 40,
-                "overall_score": 40,
-                "completeness_score": 40,
-                "technical_accuracy": 40,
-                "technical_correctness": 40,
-                "depth": current_depth,
-                "depth_demonstrated": "Basic",
-                "strengths": ["Communicated clearly, but answered an unrelated topic."],
-                "weaknesses": ["Answer addressed an unrelated domain and did not respond to the interviewer's question."],
-                "missing_points": [f"Did not answer the question regarding {topic}."],
-                "missing_concepts": [topic],
-                "detected_concepts": [],
-                "detected_claims": [],
-                "current_topic": topic,
-                "current_difficulty": current_depth,
-                "next_action": "REDIRECT",
-                "reason": f"Candidate answered with off-topic concepts; redirecting back to {topic}.",
-                "interviewer_risk": "HIGH",
-                "frank_feedback": f"Your response discussed unrelated concepts rather than {topic}. In technical interviews, directly addressing the prompt is essential.",
-                "is_unknown": False,
-                "predicted_followups": [{
-                    "question": redirect_q,
-                    "rationale": f"Interviewer redirects candidate back to the target topic: {topic}.",
-                    "depthLevel": current_depth,
-                    "probability": 0.95
-                }],
-                "skill_impacts": [
-                    {"skillName": "Communication", "delta": -1, "reason": "Off-topic answer during technical round."}
-                ]
-            }
-
-        # Check C: Multi-turn Technical Conversation Chains
+        # Check B: Multi-turn Technical Conversation Chains
         # Chain 1: Process vs Thread -> Shared Memory / Concurrency -> Race Condition -> Locks / Synchronization -> Lock Trade-offs
         if "process" in q_text_clean and "thread" in q_text_clean:
             # Turn 1: Process vs Thread
@@ -775,11 +1021,11 @@ Current Depth: {current_depth}
 
             if len(ans_clean) < 60:
                 answer_type = "WEAK"
-                score = 48
+                score = 45
                 detected = ["High-level Overview"]
                 followup_q = f"Can you elaborate on the specific architectural trade-offs and failure modes for {actual_q_text}?"
                 followup_rationale = "Candidate provided a very brief response; interviewer prompts for concrete technical reasoning."
-                strengths = ["Addressed the subject briefly."]
+                strengths = ["Provided a high-level response, but lacked technical elaboration."]
                 missing = ["Lacks technical depth, quantitative metrics, and architectural trade-offs."]
                 next_act = "CLARIFY"
             elif has_keywords and (has_metrics or has_tradeoff):

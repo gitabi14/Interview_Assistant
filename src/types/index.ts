@@ -139,7 +139,7 @@ export interface CandidateAnswer {
   questionText: string;
   answerText: string;
   timestamp: string;
-  answerType?: 'STRONG' | 'PARTIAL' | 'WEAK' | 'UNKNOWN' | 'OFF_TOPIC';
+  answerType?: 'STRONG' | 'PARTIAL' | 'WEAK' | 'UNKNOWN' | 'OFF_TOPIC' | 'GIBBERISH' | 'EVASION';
   nextAction?: 'FOLLOW_UP' | 'DEEP_PROBE' | 'CLARIFY' | 'TEACH_RETEST' | 'REDIRECT' | 'NEW_TOPIC';
   currentTopic?: string;
   currentDifficulty?: number;
@@ -157,7 +157,7 @@ export interface CandidateAnswer {
     depthDemonstrated: any;
     missingPoints: string[];
     strengths: string[];
-    interviewerRisk: 'LOW' | 'MEDIUM' | 'HIGH';
+    interviewerRisk: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
     frankFeedback: string;
   };
   predictedFollowUps: {

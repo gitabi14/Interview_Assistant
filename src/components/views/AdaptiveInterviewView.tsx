@@ -325,6 +325,27 @@ export const AdaptiveInterviewView: React.FC = () => {
               </div>
             </div>
 
+            {/* Disqualifying Alert Banner for Irrelevant / Gibberish / Off-Topic Answers */}
+            {(lastAnswerEvaluation.answerType === 'GIBBERISH' ||
+              lastAnswerEvaluation.answerType === 'OFF_TOPIC' ||
+              lastAnswerEvaluation.answerType === 'EVASION' ||
+              lastAnswerEvaluation.evaluation.completenessScore <= 10) && (
+              <div className="bg-rose-950/40 border-2 border-rose-500/60 rounded-xl p-4 flex items-start gap-3 text-rose-300 animate-in fade-in">
+                <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <div className="font-bold text-sm text-rose-200 uppercase tracking-wider flex items-center gap-2">
+                    <span>Disqualifying Interview Response ({lastAnswerEvaluation.answerType})</span>
+                    <span className="text-xs bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded border border-rose-500/40 font-mono">
+                      Score: 0.0 / 10
+                    </span>
+                  </div>
+                  <p className="text-xs text-rose-300/90 leading-relaxed font-sans">
+                    In a real FAANG or top-tier technical interview, submitting unparseable characters, random keyboard mashing, or completely off-topic commentary results in an immediate failing evaluation and disqualification.
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* Frank Feedback Text */}
             <div className="text-sm text-slate-200 leading-relaxed font-sans bg-[#0b0e21] p-4 rounded-xl border border-slate-800">
               "{lastAnswerEvaluation.evaluation.frankFeedback}"
@@ -333,16 +354,34 @@ export const AdaptiveInterviewView: React.FC = () => {
             {/* Strengths & Missing Points Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               {/* What you did well */}
-              <div className="bg-emerald-950/20 border border-emerald-500/30 rounded-xl p-4 space-y-2">
-                <div className="font-bold text-emerald-400 flex items-center gap-1.5">
+              <div
+                className={`rounded-xl p-4 space-y-2 border ${
+                  lastAnswerEvaluation.evaluation.strengths && lastAnswerEvaluation.evaluation.strengths.length > 0
+                    ? 'bg-emerald-950/20 border-emerald-500/30'
+                    : 'bg-slate-900/40 border-slate-800'
+                }`}
+              >
+                <div
+                  className={`font-bold flex items-center gap-1.5 ${
+                    lastAnswerEvaluation.evaluation.strengths && lastAnswerEvaluation.evaluation.strengths.length > 0
+                      ? 'text-emerald-400'
+                      : 'text-slate-400'
+                  }`}
+                >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>What you did well:</span>
                 </div>
-                <ul className="space-y-1 text-slate-300 list-disc pl-4">
-                  {lastAnswerEvaluation.evaluation.strengths.map((s, i) => (
-                    <li key={i}>{s}</li>
-                  ))}
-                </ul>
+                {lastAnswerEvaluation.evaluation.strengths && lastAnswerEvaluation.evaluation.strengths.length > 0 ? (
+                  <ul className="space-y-1 text-slate-300 list-disc pl-4">
+                    {lastAnswerEvaluation.evaluation.strengths.map((s, i) => (
+                      <li key={i}>{s}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-xs text-slate-400 italic">
+                    None — No valid or coherent technical content provided.
+                  </p>
+                )}
               </div>
 
               {/* What was missing */}
