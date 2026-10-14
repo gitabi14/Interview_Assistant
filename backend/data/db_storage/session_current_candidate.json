@@ -1,74 +1,54 @@
 {
   "session_id": "current_candidate",
-  "candidate_name": "KABILAN K A",
-  "filename": "Resume_Kabilan_.pdf",
-  "raw_text": "KABILAN K A\nkabilanka2509@gmail.com | 9952301658 |  LinkedIn | GitHub | Portfolio\nEducation\nBannari Amman Institute Of Technology, Bachelor of Engineering, in Computer \n2024 \u2013 2028 \nScience\n\u2022 CGPA: 8.28*/10.0 (Up to Fourth Semester)\nSSM Central School Senior Secondary \n2022 \u2013 2024\n\u2022 Higher Secondary Certificate (HSC) Percentage \u2013 93.4\n\u2022 Secondary School Leaving Certificate (SSLC) Percentage \u2013 83.4\nProjects\nTraffix \u2013 Urban Traffic Management System \ngithub.com/Traffix/repo\n\u2022 Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic \ndensity, reducing congestion and improving vehicle flow at urban intersections. It also prioritizes emergency vehicles and \nenables predictive traffic analysis for future congestion control.\n\u2022 Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.\nHealthSeva AI \ngithub.com/HealthSeva/repo\n\u2022 Developed an AI-driven healthcare assistant for symptom-based disease analysis, health recommendations, and instant \nmedical guidance, improving healthcare accessibility through intelligent chatbot support and predictive monitoring.\n\u2022 Technology Used: Machine Learning, Deep Learning, NLP, Python, FastAPI, MongoDB.\nDiabetes Prediction \ngithub.com/Diabetes/repo\n\u2022 Developed a machine learning-based diabetes prediction system to analyze health parameters and provide quick, accurate \nearly-stage diabetes risk assessment for preventive healthcare.\n\u2022 Technology Used: Machine Learning, Logistic Regression, Python, Flask, Streamlit.\nSkills\n\u2022 Languages : Java, SQL, Python.\n\u2022 Computer Core Concepts : Object Oriented Programming system (OOPs), DBMS.\n\u2022 Areas of Interest : Machine Learning, Deep Learning, Data Structures, Prompt Engineering.\n\u2022 LeetCode : leetcode.com/kabilan/\nAchievements\n\u2022 Winner of Mind 2 Market, an on-the-spot presentation competition organized by the Rotaract Club at KPR Institute \nof Engineering and Technology, Coimbatore, securing a cash prize of \u20b92000 through strong",
+  "candidate_name": "SARAH JENKINS",
+  "filename": "pasted_resume.txt",
+  "raw_text": "\nSARAH JENKINS\nEmail: sarah.jenkins@gmail.com | Phone: 555-019-2834\nLocation: Seattle, WA | LinkedIn: linkedin.com/in/sarahjenkins\n\nPROFESSIONAL SUMMARY\nSenior Backend Engineer specialized in distributed Java microservices, Apache Kafka event streaming, and high-throughput PostgreSQL architectures.\n\nEDUCATION\nUniversity of Washington \u2014 B.S. in Computer Science (2020 \u2013 2024)\n\nTECHNICAL SKILLS\nLanguages: Java, SQL, Go, TypeScript\nFrameworks: Spring Boot, Spring Cloud, Hibernate, Express\nDeveloper Tools: Docker, Kubernetes, AWS, Terraform, Git, Jenkins\nDatabases & Queues: PostgreSQL, Apache Kafka, Redis, DynamoDB\n\nPROJECTS\nCloudScale E-Commerce Payment Gateway\n\u2022 Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.\n\u2022 Implemented distributed saga pattern with PostgreSQL optimistic locking preventing double-spend anomalies.\n\u2022 Reduced p99 checkout latency by 45% using Redis read-through caching.\n\nDistributed Real-Time Telemetry Pipeline\n\u2022 Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M daily events into Snowflake.\n\u2022 Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability.\n",
   "resume": {
     "candidate": {
-      "name": "KABILAN K A",
-      "email": "kabilanka2509@gmail.com",
-      "phone": "9952301658",
-      "location": "Chennai, India",
-      "linkedin": "linkedin.com/in/abishek-r",
-      "github": "github.com/Traffix",
-      "leetcode": "leetcode.com/kabilan"
+      "name": "SARAH JENKINS",
+      "email": "sarah.jenkins@gmail.com",
+      "phone": "7448665599",
+      "location": "Seattle",
+      "linkedin": "linkedin.com/in/sarahjenkins",
+      "github": "github.com/abhisekrajavel99",
+      "leetcode": "leetcode.com/Abishek"
     },
-    "summary": "Second-year B.E. Computer Science student with practical experience in full-stack architecture, machine learning (YOLO/LSTM/FAISS), and high-throughput backend services.",
+    "summary": "Senior Backend Engineer specialized in distributed Java microservices, Apache Kafka event streaming, and high-throughput PostgreSQL architectures.",
     "education": [
       {
-        "institution": "\u2022 Secondary School Leaving Certificate (SSLC) Percentage \u2013 83.4",
-        "location": "Bachelor of Engineering",
-        "degree": "Bannari Amman Institute Of Technology, Bachelor of Engineering, in Computer",
+        "institution": "University of Washington \u2014 B.S. in Computer Science (2020 \u2013 2024)",
+        "location": "Sathyamangalam",
+        "degree": "University of Washington \u2014 B.S. in Computer Science (2020 \u2013 2024)",
         "field": "Computer Science and Engineering",
-        "cgpa": "8.28",
+        "cgpa": "7.8/10",
         "start_year": 2024,
         "end_year": 2028
       }
     ],
     "skills_hierarchy": {
       "languages": [
-        "Python",
         "Java",
-        "SQL"
+        "SQL",
+        "TypeScript",
+        "Go"
       ],
       "frameworks": [
-        "React",
-        "FastAPI",
-        "Spring Boot",
-        "Tailwind CSS"
+        "Spring Boot"
       ],
       "databases": [
-        "MongoDB",
-        "MySQL",
-        "PostgreSQL"
+        "PostgreSQL",
+        "Redis"
       ],
-      "ml_ai": [
-        "Machine Learning",
-        "Deep Learning"
-      ],
+      "ml_ai": [],
       "tools_apis": [
         "Git",
-        "MQTT",
-        "REST APIs",
-        "GIS",
-        "Weather API",
-        "SMS/IVR"
+        "Docker",
+        "Kubernetes",
+        "AWS"
       ],
-      "concepts": [
-        "DBMS",
-        "Data Structures",
-        "Prompt Engineering"
-      ]
+      "concepts": []
     },
     "skills_flat": [
-      {
-        "name": "Python",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Languages"
-      },
       {
         "name": "Java",
         "mentioned": true,
@@ -86,20 +66,20 @@
         "category": "Languages"
       },
       {
-        "name": "React",
+        "name": "TypeScript",
         "mentioned": true,
         "claimed_level": null,
         "demonstrated_level": null,
         "verification_confidence": null,
-        "category": "Frameworks"
+        "category": "Languages"
       },
       {
-        "name": "FastAPI",
+        "name": "Go",
         "mentioned": true,
         "claimed_level": null,
         "demonstrated_level": null,
         "verification_confidence": null,
-        "category": "Frameworks"
+        "category": "Languages"
       },
       {
         "name": "Spring Boot",
@@ -110,30 +90,6 @@
         "category": "Frameworks"
       },
       {
-        "name": "Tailwind CSS",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Frameworks"
-      },
-      {
-        "name": "MongoDB",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Databases"
-      },
-      {
-        "name": "MySQL",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Databases"
-      },
-      {
         "name": "PostgreSQL",
         "mentioned": true,
         "claimed_level": null,
@@ -142,20 +98,12 @@
         "category": "Databases"
       },
       {
-        "name": "Machine Learning",
+        "name": "Redis",
         "mentioned": true,
         "claimed_level": null,
         "demonstrated_level": null,
         "verification_confidence": null,
-        "category": "ML / AI"
-      },
-      {
-        "name": "Deep Learning",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "ML / AI"
+        "category": "Databases"
       },
       {
         "name": "Git",
@@ -166,7 +114,7 @@
         "category": "Tools & APIs"
       },
       {
-        "name": "MQTT",
+        "name": "Docker",
         "mentioned": true,
         "claimed_level": null,
         "demonstrated_level": null,
@@ -174,7 +122,7 @@
         "category": "Tools & APIs"
       },
       {
-        "name": "REST APIs",
+        "name": "Kubernetes",
         "mentioned": true,
         "claimed_level": null,
         "demonstrated_level": null,
@@ -182,93 +130,76 @@
         "category": "Tools & APIs"
       },
       {
-        "name": "GIS",
+        "name": "AWS",
         "mentioned": true,
         "claimed_level": null,
         "demonstrated_level": null,
         "verification_confidence": null,
         "category": "Tools & APIs"
-      },
-      {
-        "name": "Weather API",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Tools & APIs"
-      },
-      {
-        "name": "SMS/IVR",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Tools & APIs"
-      },
-      {
-        "name": "DBMS",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Concepts"
-      },
-      {
-        "name": "Data Structures",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Concepts"
-      },
-      {
-        "name": "Prompt Engineering",
-        "mentioned": true,
-        "claimed_level": null,
-        "demonstrated_level": null,
-        "verification_confidence": null,
-        "category": "Concepts"
       }
     ],
     "projects": [
       {
         "id": "proj-1",
-        "name": "Traffix \u2013 Urban Traffic Management System",
-        "description": "High-scale engineering project: Traffix \u2013 Urban Traffic Management System",
-        "bullet_points": [],
+        "name": "CloudScale E-Commerce Payment Gateway",
+        "description": "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
+        "bullet_points": [
+          "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
+          "Implemented distributed saga pattern with PostgreSQL optimistic locking preventing double-spend anomalies.",
+          "Reduced p99 checkout latency by 45% using Redis read-through caching."
+        ],
         "technologies": [
-          "Java",
-          "Python",
-          "FastAPI",
-          "React"
+          "Spring Boot",
+          "Kafka",
+          "AWS",
+          "PostgreSQL",
+          "Redis",
+          "DynamoDB"
         ],
         "candidate_contribution": "Designed core architecture and backend pipelines.",
-        "architecture": "Client -> Java -> Distributed Queue -> Storage Layer",
+        "architecture": "Client -> Spring Boot -> Distributed Queue -> Storage Layer",
         "metrics": [
-          "High performance"
+          "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka."
         ],
-        "impact": "Engineered Traffix \u2013 Urban Traffic Management System for production scale.",
+        "impact": "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
         "claims": [
           {
             "id": "claim-proj-1-1",
-            "claim": "Architected Traffix \u2013 Urban Traffic Management System",
-            "source_project": "Traffix \u2013 Urban Traffic Management System",
-            "source_text": "Traffix \u2013 Urban Traffic Management System",
-            "type": "ARCHITECTURE",
-            "technology": "Java",
-            "verification_question": "What was your core architectural contribution to Traffix \u2013 Urban Traffic Management System?",
+            "claim": "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
+            "source_project": "CloudScale E-Commerce Payment Gateway",
+            "source_text": "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
+            "type": "METRIC",
+            "technology": "Spring Boot",
+            "verification_question": "How did you engineer and benchmark: 'Engineered high-throughput distributed transaction pipeline processing 15,000 re'?",
             "expected_evidence": [
-              "System design",
-              "Data flow",
-              "Concurrency model"
+              "Performance benchmarks",
+              "Architecture trade-offs",
+              "Telemetry logs"
             ],
-            "risk_level": "MEDIUM",
+            "risk_level": "HIGH",
             "claimed_level": "Advanced",
-            "evidence_confidence": 80
+            "evidence_confidence": 85
+          },
+          {
+            "id": "claim-proj-1-3",
+            "claim": "Reduced p99 checkout latency by 45% using Redis read-through caching.",
+            "source_project": "CloudScale E-Commerce Payment Gateway",
+            "source_text": "Reduced p99 checkout latency by 45% using Redis read-through caching.",
+            "type": "METRIC",
+            "technology": "Spring Boot",
+            "verification_question": "How did you engineer and benchmark: 'Reduced p99 checkout latency by 45% using Redis read-through caching.'?",
+            "expected_evidence": [
+              "Performance benchmarks",
+              "Architecture trade-offs",
+              "Telemetry logs"
+            ],
+            "risk_level": "HIGH",
+            "claimed_level": "Advanced",
+            "evidence_confidence": 85
           }
         ],
         "interview_topics": [
-          "Traffix \u2013 Urban Traffic Management System architecture",
+          "CloudScale E-Commerce Payment Gateway architecture",
           "Scalability trade-offs",
           "Failure domain resilience"
         ],
@@ -279,92 +210,64 @@
       },
       {
         "id": "proj-2",
-        "name": "github.com/Traffix/repo",
-        "description": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
+        "name": "Distributed Real-Time Telemetry Pipeline",
+        "description": "Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M daily events into Snowflake.",
         "bullet_points": [
-          "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic"
+          "Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M daily events into Snowflake.",
+          "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability."
         ],
         "technologies": [
-          "Java",
-          "Python",
-          "FastAPI",
-          "React"
+          "Spring Boot",
+          "Kafka",
+          "AWS",
+          "PostgreSQL",
+          "Redis",
+          "DynamoDB"
         ],
         "candidate_contribution": "Designed core architecture and backend pipelines.",
-        "architecture": "Client -> Java -> Distributed Queue -> Storage Layer",
+        "architecture": "Client -> Spring Boot -> Distributed Queue -> Storage Layer",
         "metrics": [
-          "High performance"
+          "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability."
         ],
-        "impact": "Engineered github.com/Traffix/repo for production scale.",
+        "impact": "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability.",
         "claims": [
           {
             "id": "claim-proj-2-1",
-            "claim": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
-            "source_project": "github.com/Traffix/repo",
-            "source_text": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
-            "type": "ARCHITECTURE",
-            "technology": "Java",
-            "verification_question": "What was your core architectural contribution to github.com/Traffix/repo?",
+            "claim": "Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M daily events into Snowflake.",
+            "source_project": "Distributed Real-Time Telemetry Pipeline",
+            "source_text": "Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M daily events into Snowflake.",
+            "type": "METRIC",
+            "technology": "Spring Boot",
+            "verification_question": "How did you engineer and benchmark: 'Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M dail'?",
             "expected_evidence": [
-              "System design",
-              "Data flow",
-              "Concurrency model"
+              "Performance benchmarks",
+              "Architecture trade-offs",
+              "Telemetry logs"
             ],
-            "risk_level": "MEDIUM",
+            "risk_level": "HIGH",
             "claimed_level": "Advanced",
-            "evidence_confidence": 80
-          }
-        ],
-        "interview_topics": [
-          "github.com/Traffix/repo architecture",
-          "Scalability trade-offs",
-          "Failure domain resilience"
-        ],
-        "risk_areas": [
-          "Validation of claimed scale",
-          "Concurrency bottleneck points"
-        ]
-      },
-      {
-        "id": "proj-3",
-        "name": "enables predictive traffic analysis for future congestion control.",
-        "description": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
-        "bullet_points": [
-          "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT."
-        ],
-        "technologies": [
-          "Java",
-          "Python",
-          "FastAPI",
-          "React"
-        ],
-        "candidate_contribution": "Designed core architecture and backend pipelines.",
-        "architecture": "Client -> Java -> Distributed Queue -> Storage Layer",
-        "metrics": [
-          "High performance"
-        ],
-        "impact": "Engineered enables predictive traffic analysis for future congestion control. for production scale.",
-        "claims": [
+            "evidence_confidence": 85
+          },
           {
-            "id": "claim-proj-3-1",
-            "claim": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
-            "source_project": "enables predictive traffic analysis for future congestion control.",
-            "source_text": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
-            "type": "ARCHITECTURE",
-            "technology": "Java",
-            "verification_question": "What was your core architectural contribution to enables predictive traffic analysis for future congestion control.?",
+            "id": "claim-proj-2-2",
+            "claim": "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability.",
+            "source_project": "Distributed Real-Time Telemetry Pipeline",
+            "source_text": "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability.",
+            "type": "METRIC",
+            "technology": "Spring Boot",
+            "verification_question": "How did you engineer and benchmark: 'Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery re'?",
             "expected_evidence": [
-              "System design",
-              "Data flow",
-              "Concurrency model"
+              "Performance benchmarks",
+              "Architecture trade-offs",
+              "Telemetry logs"
             ],
-            "risk_level": "MEDIUM",
+            "risk_level": "HIGH",
             "claimed_level": "Advanced",
-            "evidence_confidence": 80
+            "evidence_confidence": 85
           }
         ],
         "interview_topics": [
-          "enables predictive traffic analysis for future congestion control. architecture",
+          "Distributed Real-Time Telemetry Pipeline architecture",
           "Scalability trade-offs",
           "Failure domain resilience"
         ],
@@ -387,97 +290,107 @@
     "claims": [
       {
         "id": "claim-proj-1-1",
-        "claim": "Architected Traffix \u2013 Urban Traffic Management System",
-        "source_project": "Traffix \u2013 Urban Traffic Management System",
-        "source_text": "Traffix \u2013 Urban Traffic Management System",
-        "type": "ARCHITECTURE",
-        "technology": "Java",
-        "verification_question": "What was your core architectural contribution to Traffix \u2013 Urban Traffic Management System?",
+        "claim": "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
+        "source_project": "CloudScale E-Commerce Payment Gateway",
+        "source_text": "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
+        "type": "METRIC",
+        "technology": "Spring Boot",
+        "verification_question": "How did you engineer and benchmark: 'Engineered high-throughput distributed transaction pipeline processing 15,000 re'?",
         "expected_evidence": [
-          "System design",
-          "Data flow",
-          "Concurrency model"
+          "Performance benchmarks",
+          "Architecture trade-offs",
+          "Telemetry logs"
         ],
-        "risk_level": "MEDIUM",
+        "risk_level": "HIGH",
         "claimed_level": "Advanced",
-        "evidence_confidence": 80
+        "evidence_confidence": 85
+      },
+      {
+        "id": "claim-proj-1-3",
+        "claim": "Reduced p99 checkout latency by 45% using Redis read-through caching.",
+        "source_project": "CloudScale E-Commerce Payment Gateway",
+        "source_text": "Reduced p99 checkout latency by 45% using Redis read-through caching.",
+        "type": "METRIC",
+        "technology": "Spring Boot",
+        "verification_question": "How did you engineer and benchmark: 'Reduced p99 checkout latency by 45% using Redis read-through caching.'?",
+        "expected_evidence": [
+          "Performance benchmarks",
+          "Architecture trade-offs",
+          "Telemetry logs"
+        ],
+        "risk_level": "HIGH",
+        "claimed_level": "Advanced",
+        "evidence_confidence": 85
       },
       {
         "id": "claim-proj-2-1",
-        "claim": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
-        "source_project": "github.com/Traffix/repo",
-        "source_text": "Developed an AI-powered smart traffic management system that optimizes signal timings based on real-time traffic",
-        "type": "ARCHITECTURE",
-        "technology": "Java",
-        "verification_question": "What was your core architectural contribution to github.com/Traffix/repo?",
+        "claim": "Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M daily events into Snowflake.",
+        "source_project": "Distributed Real-Time Telemetry Pipeline",
+        "source_text": "Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M daily events into Snowflake.",
+        "type": "METRIC",
+        "technology": "Spring Boot",
+        "verification_question": "How did you engineer and benchmark: 'Architected multi-region AWS Kinesis and Kafka consumer group streaming 50M dail'?",
         "expected_evidence": [
-          "System design",
-          "Data flow",
-          "Concurrency model"
+          "Performance benchmarks",
+          "Architecture trade-offs",
+          "Telemetry logs"
         ],
-        "risk_level": "MEDIUM",
+        "risk_level": "HIGH",
         "claimed_level": "Advanced",
-        "evidence_confidence": 80
+        "evidence_confidence": 85
       },
       {
-        "id": "claim-proj-3-1",
-        "claim": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
-        "source_project": "enables predictive traffic analysis for future congestion control.",
-        "source_text": "Technology Used: React, FastAPI, MongoDB, Machine Learning, YOLO, LSTM, MQTT.",
-        "type": "ARCHITECTURE",
-        "technology": "Java",
-        "verification_question": "What was your core architectural contribution to enables predictive traffic analysis for future congestion control.?",
+        "id": "claim-proj-2-2",
+        "claim": "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability.",
+        "source_project": "Distributed Real-Time Telemetry Pipeline",
+        "source_text": "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability.",
+        "type": "METRIC",
+        "technology": "Spring Boot",
+        "verification_question": "How did you engineer and benchmark: 'Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery re'?",
         "expected_evidence": [
-          "System design",
-          "Data flow",
-          "Concurrency model"
+          "Performance benchmarks",
+          "Architecture trade-offs",
+          "Telemetry logs"
         ],
-        "risk_level": "MEDIUM",
+        "risk_level": "HIGH",
         "claimed_level": "Advanced",
-        "evidence_confidence": 80
+        "evidence_confidence": 85
       }
     ],
     "section_metadata": {
       "sections_detected": [
         "CONTACT",
+        "SUMMARY",
         "EDUCATION",
         "SKILLS",
-        "PROJECTS",
-        "ACHIEVEMENTS"
+        "PROJECTS"
       ],
-      "project_count": 3,
-      "skills_count": 21,
-      "claims_count": 3,
+      "project_count": 2,
+      "skills_count": 11,
+      "claims_count": 4,
       "confidence_score": 0.99,
       "warnings": []
     },
-    "raw_text_length": 2315,
-    "text_preview": "KABILAN K A\nkabilanka2509@gmail.com | 9952301658 |  LinkedIn | GitHub | Portfolio\nEducation\nBannari Amman Institute Of Technology, Bachelor of Engineering, in Computer \n2024 \u2013 2028 \nScience\n\u2022 CGPA: 8.28*/10.0 (Up to Fourth Semester)\nSSM Central School Senior Secondary \n2022 \u2013 2024\n\u2022 Higher Secondary Certificate (HSC) Percentage \u2013 93.4\n\u2022 Secondary School Leaving Certificate (SSLC) Percentage \u2013 83.4\nProjects\nTraffix \u2013 Urban Traffic Management System \ngithub.com/Traffix/repo\n\u2022 Developed an AI-power"
+    "raw_text_length": 1210,
+    "text_preview": "\nSARAH JENKINS\nEmail: sarah.jenkins@gmail.com | Phone: 555-019-2834\nLocation: Seattle, WA | LinkedIn: linkedin.com/in/sarahjenkins\n\nPROFESSIONAL SUMMARY\nSenior Backend Engineer specialized in distributed Java microservices, Apache Kafka event streaming, and high-throughput PostgreSQL architectures.\n\nEDUCATION\nUniversity of Washington \u2014 B.S. in Computer Science (2020 \u2013 2024)\n\nTECHNICAL SKILLS\nLanguages: Java, SQL, Go, TypeScript\nFrameworks: Spring Boot, Spring Cloud, Hibernate, Express\nDeveloper "
   },
-  "created_at": "2026-10-05 14:37:57",
-  "updated_at": "2026-10-05 14:37:57",
+  "created_at": "2026-10-14 14:57:25",
+  "updated_at": "2026-10-14 15:00:00",
   "interview_plan": {
     "success": true,
-    "company": "Microsoft",
-    "role": "Software Engineer",
-    "total_questions": 10,
+    "company": "Amazon",
+    "role": "Senior SDE",
+    "total_questions": 9,
     "project_coverage": {
       "proj-1": {
-        "name": "Traffix \u2013 Urban Traffic Management System",
+        "name": "CloudScale E-Commerce Payment Gateway",
         "questions_planned": 3,
         "questions_asked": 0,
         "topics_covered": [],
         "claims_verified": []
       },
       "proj-2": {
-        "name": "github.com/Traffix/repo",
-        "questions_planned": 3,
-        "questions_asked": 0,
-        "topics_covered": [],
-        "claims_verified": []
-      },
-      "proj-3": {
-        "name": "enables predictive traffic analysis for future congestion control.",
+        "name": "Distributed Real-Time Telemetry Pipeline",
         "questions_planned": 3,
         "questions_asked": 0,
         "topics_covered": [],
@@ -504,15 +417,15 @@
       },
       {
         "id": "q-round-2",
-        "question": "In Traffix \u2013 Urban Traffic Management System, can you walk me through your end-to-end architecture from data ingestion to user consumption?",
+        "question": "In CloudScale E-Commerce Payment Gateway, can you walk me through your end-to-end architecture from data ingestion to user consumption?",
         "category": "architecture",
         "source": "resume_claim",
-        "source_project": "Traffix \u2013 Urban Traffic Management System",
-        "source_claim": "Built using Java, Python, FastAPI",
+        "source_project": "CloudScale E-Commerce Payment Gateway",
+        "source_claim": "Built using Spring Boot, Kafka, AWS",
         "target_skill": "System Design & Architecture",
         "difficulty": "medium",
         "depth_level": 3,
-        "why_this_question": "Validates system design reasoning and architectural ownership in Traffix \u2013 Urban Traffic Management System.",
+        "why_this_question": "Validates system design reasoning and architectural ownership in CloudScale E-Commerce Payment Gateway.",
         "expected_topics": [
           "Data Flow",
           "Async Queuing",
@@ -521,11 +434,11 @@
       },
       {
         "id": "q-round-3",
-        "question": "In Traffix \u2013 Urban Traffic Management System, why did you choose Java over standard alternatives, and what specific latency or throughput trade-offs did you encounter?",
+        "question": "In CloudScale E-Commerce Payment Gateway, why did you choose Spring Boot over standard alternatives, and what specific latency or throughput trade-offs did you encounter?",
         "category": "project_technical",
         "source": "resume_claim",
-        "source_project": "Traffix \u2013 Urban Traffic Management System",
-        "source_claim": "Engineered Traffix \u2013 Urban Traffic Management System for production scale.",
+        "source_project": "CloudScale E-Commerce Payment Gateway",
+        "source_claim": "Engineered high-throughput distributed transaction pipeline processing 15,000 requests/sec with Spring Boot and Kafka.",
         "target_skill": "Edge Computing & Latency SLAs",
         "difficulty": "hard",
         "depth_level": 5,
@@ -538,15 +451,15 @@
       },
       {
         "id": "q-round-4",
-        "question": "In your github.com/Traffix/repo, how did you design the indexing and search algorithms to maintain low query latency under high load?",
+        "question": "In your Distributed Real-Time Telemetry Pipeline, how did you design the indexing and search algorithms to maintain low query latency under high load?",
         "category": "project_technical",
         "source": "resume_claim",
-        "source_project": "github.com/Traffix/repo",
-        "source_claim": "Engineered github.com/Traffix/repo for production scale.",
+        "source_project": "Distributed Real-Time Telemetry Pipeline",
+        "source_claim": "Integrated automated dead-letter queues (DLQ) achieving 99.99% event delivery reliability.",
         "target_skill": "Data Structures & Indexing",
         "difficulty": "hard",
         "depth_level": 5,
-        "why_this_question": "Probes algorithmic depth, vector/database indexing, and scalability in github.com/Traffix/repo.",
+        "why_this_question": "Probes algorithmic depth, vector/database indexing, and scalability in Distributed Real-Time Telemetry Pipeline.",
         "expected_topics": [
           "Index Partitioning",
           "Query Optimization",
@@ -555,10 +468,10 @@
       },
       {
         "id": "q-round-5",
-        "question": "How did you implement security and authorization in your github.com/Traffix/repo, and how did you prevent race conditions during concurrent user actions?",
+        "question": "How did you implement security and authorization in your Distributed Real-Time Telemetry Pipeline, and how did you prevent race conditions during concurrent user actions?",
         "category": "metric",
         "source": "resume_claim",
-        "source_project": "github.com/Traffix/repo",
+        "source_project": "Distributed Real-Time Telemetry Pipeline",
         "source_claim": "Role-based authentication & concurrency safety",
         "target_skill": "Authentication & Concurrency",
         "difficulty": "hard",
@@ -568,23 +481,6 @@
           "JWT/Session Verification",
           "Optimistic Locking",
           "Database Atomicity"
-        ]
-      },
-      {
-        "id": "q-round-6",
-        "question": "In enables predictive traffic analysis for future congestion control., how did you handle external API telemetry latency, network partition failures, and rate limits?",
-        "category": "project_technical",
-        "source": "resume_claim",
-        "source_project": "enables predictive traffic analysis for future congestion control.",
-        "source_claim": "Engineered enables predictive traffic analysis for future congestion control. for production scale.",
-        "target_skill": "Distributed Resilience & Webhooks",
-        "difficulty": "hard",
-        "depth_level": 6,
-        "why_this_question": "Tests fault tolerance, circuit breaker patterns, and distributed resilience in enables predictive traffic analysis for future congestion control..",
-        "expected_topics": [
-          "Exponential Backoff",
-          "Circuit Breakers",
-          "Asynchronous Event Handling"
         ]
       },
       {
@@ -609,7 +505,7 @@
         "question": "When streaming telemetry or processing asynchronous event queues, what QoS/backpressure strategy did you use to prevent worker thread pool exhaustion?",
         "category": "architecture",
         "source": "resume_claim",
-        "source_project": "Traffix \u2013 Urban Traffic Management System",
+        "source_project": "CloudScale E-Commerce Payment Gateway",
         "source_claim": "Asynchronous Event Pipeline",
         "target_skill": "Concurrency & Asynchronous IO",
         "difficulty": "staff",
@@ -640,7 +536,7 @@
       },
       {
         "id": "q-round-10",
-        "question": "If Microsoft deployed your primary engineering system across 1,000 distributed edge nodes with a 99.99% availability SLA, what are the first 3 architectural bottlenecks that will break, and how would you redesign the system?",
+        "question": "If Amazon deployed your primary engineering system across 1,000 distributed edge nodes with a 99.99% availability SLA, what are the first 3 architectural bottlenecks that will break, and how would you redesign the system?",
         "category": "architecture",
         "source": "resume_claim",
         "source_project": "Candidate Projects",
@@ -648,7 +544,7 @@
         "target_skill": "Distributed Systems Scalability",
         "difficulty": "staff",
         "depth_level": 9,
-        "why_this_question": "Evaluates readiness for Microsoft's enterprise-scale distributed systems and high-availability operations.",
+        "why_this_question": "Evaluates readiness for Amazon's enterprise-scale distributed systems and high-availability operations.",
         "expected_topics": [
           "Distributed Consensus",
           "Sharding & Replication",
@@ -656,5 +552,460 @@
         ]
       }
     ]
-  }
+  },
+  "answers": [
+    {
+      "question_id": "q-1",
+      "question_text": "What is the difference between a process and a thread?",
+      "answer_text": "A process has its own memory space, while threads within the same process share memory.",
+      "evaluation": {
+        "success": true,
+        "question_id": "q-1",
+        "source_project": "General Technical",
+        "answer_type": "STRONG",
+        "score": 88,
+        "overall_score": 88,
+        "completeness_score": 88,
+        "technical_accuracy": 92,
+        "technical_correctness": 92,
+        "depth": 4,
+        "depth_demonstrated": "Advanced",
+        "specificity": 83,
+        "relevance": 85,
+        "evidence": 85,
+        "reasoning": 88,
+        "communication": 88,
+        "ownership": 85,
+        "is_unknown": false,
+        "current_topic": "Operating Systems",
+        "current_difficulty": 4,
+        "next_action": "FOLLOW_UP",
+        "reason": "Candidate correctly identified shared memory in threads; interviewer probes the core concurrency consequence (race conditions / data hazards).",
+        "strengths": [
+          "Accurately distinguished process address space isolation vs thread shared memory."
+        ],
+        "weaknesses": [
+          "Could mention OS scheduling overhead differences or context-switch costs."
+        ],
+        "missing_points": [
+          "Could mention OS scheduling overhead differences or context-switch costs."
+        ],
+        "missing_concepts": [
+          "Could mention OS scheduling overhead differences or context-switch costs."
+        ],
+        "detected_claims": [
+          "Adaptive Defense"
+        ],
+        "detected_concepts": [
+          "Memory Isolation",
+          "Shared Memory Space"
+        ],
+        "interviewer_risk": "LOW",
+        "frank_feedback": "Your response demonstrates strong understanding (88/100). Accurately distinguished process address space isolation vs thread shared memory. However: Could mention OS scheduling overhead differences or context-switch costs.",
+        "predicted_followups": [
+          {
+            "question": "What problem can occur when multiple threads access shared memory concurrently?",
+            "rationale": "Candidate correctly identified shared memory in threads; interviewer probes the core concurrency consequence (race conditions / data hazards).",
+            "depthLevel": 4,
+            "probability": 0.94
+          }
+        ],
+        "skill_impacts": [
+          {
+            "skillName": "Operating Systems",
+            "delta": 3,
+            "reason": "Demonstrated strong proficiency in Operating Systems."
+          }
+        ]
+      },
+      "timestamp": "2026-10-14 15:00:00"
+    },
+    {
+      "question_id": "q-2",
+      "question_text": "What problem can occur when multiple threads access shared memory concurrently?",
+      "answer_text": "A race condition.",
+      "evaluation": {
+        "success": true,
+        "question_id": "q-2",
+        "source_project": "General Technical",
+        "answer_type": "STRONG",
+        "score": 90,
+        "overall_score": 90,
+        "completeness_score": 90,
+        "technical_accuracy": 94,
+        "technical_correctness": 94,
+        "depth": 5,
+        "depth_demonstrated": "Advanced",
+        "specificity": 85,
+        "relevance": 85,
+        "evidence": 85,
+        "reasoning": 90,
+        "communication": 72,
+        "ownership": 85,
+        "is_unknown": false,
+        "current_topic": "Operating Systems",
+        "current_difficulty": 5,
+        "next_action": "FOLLOW_UP",
+        "reason": "Candidate accurately identified race conditions; interviewer now asks for synchronization and concurrency control mechanisms.",
+        "strengths": [
+          "Directly identified race conditions as the core shared-memory concurrency hazard."
+        ],
+        "weaknesses": [
+          "Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving)."
+        ],
+        "missing_points": [
+          "Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving)."
+        ],
+        "missing_concepts": [
+          "Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving)."
+        ],
+        "detected_claims": [
+          "Adaptive Defense"
+        ],
+        "detected_concepts": [
+          "Race Conditions",
+          "Thread Safety"
+        ],
+        "interviewer_risk": "LOW",
+        "frank_feedback": "Your response demonstrates strong understanding (90/100). Directly identified race conditions as the core shared-memory concurrency hazard. However: Could explain non-atomic read-modify-write CPU instructions (e.g., interleaving).",
+        "predicted_followups": [
+          {
+            "question": "How would you prevent a race condition?",
+            "rationale": "Candidate accurately identified race conditions; interviewer now asks for synchronization and concurrency control mechanisms.",
+            "depthLevel": 5,
+            "probability": 0.94
+          }
+        ],
+        "skill_impacts": [
+          {
+            "skillName": "Operating Systems",
+            "delta": 3,
+            "reason": "Demonstrated strong proficiency in Operating Systems."
+          }
+        ]
+      },
+      "timestamp": "2026-10-14 15:00:00"
+    },
+    {
+      "question_id": "q-3",
+      "question_text": "How would you prevent a race condition?",
+      "answer_text": "Using locks or synchronization.",
+      "evaluation": {
+        "success": true,
+        "question_id": "q-3",
+        "source_project": "General Technical",
+        "answer_type": "STRONG",
+        "score": 92,
+        "overall_score": 92,
+        "completeness_score": 92,
+        "technical_accuracy": 96,
+        "technical_correctness": 96,
+        "depth": 6,
+        "depth_demonstrated": "Advanced",
+        "specificity": 87,
+        "relevance": 85,
+        "evidence": 85,
+        "reasoning": 92,
+        "communication": 72,
+        "ownership": 85,
+        "is_unknown": false,
+        "current_topic": "Operating Systems",
+        "current_difficulty": 6,
+        "next_action": "DEEP_PROBE",
+        "reason": "Candidate correctly cited locks/synchronization; interviewer probes deeper trade-offs such as contention overhead, deadlocks, and reduced throughput.",
+        "strengths": [
+          "Articulated mutual exclusion primitives (locks, mutexes, synchronization)."
+        ],
+        "weaknesses": [
+          "Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking."
+        ],
+        "missing_points": [
+          "Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking."
+        ],
+        "missing_concepts": [
+          "Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking."
+        ],
+        "detected_claims": [
+          "Adaptive Defense"
+        ],
+        "detected_concepts": [
+          "Mutual Exclusion",
+          "Locking Primitives",
+          "Synchronization"
+        ],
+        "interviewer_risk": "LOW",
+        "frank_feedback": "Your response demonstrates strong understanding (92/100). Articulated mutual exclusion primitives (locks, mutexes, synchronization). However: Could distinguish between optimistic (atomic CAS) and pessimistic (mutex) locking.",
+        "predicted_followups": [
+          {
+            "question": "What trade-off can excessive locking introduce?",
+            "rationale": "Candidate correctly cited locks/synchronization; interviewer probes deeper trade-offs such as contention overhead, deadlocks, and reduced throughput.",
+            "depthLevel": 6,
+            "probability": 0.94
+          }
+        ],
+        "skill_impacts": [
+          {
+            "skillName": "Operating Systems",
+            "delta": 3,
+            "reason": "Demonstrated strong proficiency in Operating Systems."
+          }
+        ]
+      },
+      "timestamp": "2026-10-14 15:00:00"
+    },
+    {
+      "question_id": "q-idk",
+      "question_text": "How does TensorRT perform FP16 quantization on edge hardware?",
+      "answer_text": "I don't know.",
+      "evaluation": {
+        "success": true,
+        "question_id": "q-idk",
+        "source_project": "Traffix",
+        "answer_type": "UNKNOWN",
+        "score": 35,
+        "overall_score": 35,
+        "completeness_score": 35,
+        "technical_accuracy": 35,
+        "technical_correctness": 35,
+        "depth": 1,
+        "depth_demonstrated": "Basic (Knowledge Coaching Triggered)",
+        "strengths": [
+          "Demonstrated intellectual honesty and self-awareness."
+        ],
+        "weaknesses": [
+          "Did not articulate internal mechanisms, latency numbers, or trade-offs."
+        ],
+        "missing_points": [
+          "Did not articulate internal mechanisms, latency numbers, or trade-offs."
+        ],
+        "missing_concepts": [
+          "Core Architectural Mechanism",
+          "Quantitative Trade-offs"
+        ],
+        "detected_concepts": [],
+        "detected_claims": [],
+        "current_topic": "Edge Machine Learning",
+        "current_difficulty": 3,
+        "next_action": "TEACH_RETEST",
+        "reason": "Candidate honestly acknowledged knowledge boundary; teaching core concept before retesting.",
+        "interviewer_risk": "HIGH",
+        "frank_feedback": "You were honest about your knowledge boundary. Here is a clear 2-sentence breakdown of the core concept and how you can approach it:",
+        "is_unknown": true,
+        "concept_explanation": "In distributed systems, separating read and write pathways using asynchronous message queues prevents web workers from thread exhaustion under sudden burst traffic.",
+        "concept_example": "FastAPI endpoints push incoming telemetry to a Redis buffer, allowing worker processes to process batches asynchronously.",
+        "retry_question": "How does an asynchronous queue prevent backend server crashes during traffic spikes?",
+        "predicted_followups": [
+          {
+            "question": "How does an asynchronous queue prevent backend server crashes during traffic spikes?",
+            "rationale": "Knowledge coaching follow-up testing core comprehension after explanation.",
+            "depthLevel": 4,
+            "probability": 0.95
+          }
+        ],
+        "skill_impacts": [
+          {
+            "skillName": "System Architecture",
+            "delta": -2,
+            "reason": "Unfamiliar with core mechanism."
+          },
+          {
+            "skillName": "Communication",
+            "delta": 2,
+            "reason": "Clear intellectual honesty."
+          }
+        ]
+      },
+      "timestamp": "2026-10-14 15:00:00"
+    },
+    {
+      "question_id": "q-off",
+      "question_text": "What is the difference between a process and a thread?",
+      "answer_text": "TCP uses a three-way handshake with SYN, SYN-ACK, and ACK to establish a reliable connection.",
+      "evaluation": {
+        "success": true,
+        "question_id": "q-off",
+        "source_project": "General Technical",
+        "answer_type": "OFF_TOPIC",
+        "score": 40,
+        "overall_score": 40,
+        "completeness_score": 40,
+        "technical_accuracy": 40,
+        "technical_correctness": 40,
+        "depth": 3,
+        "depth_demonstrated": "Basic",
+        "strengths": [
+          "Communicated clearly, but answered an unrelated topic."
+        ],
+        "weaknesses": [
+          "Answer addressed an unrelated domain and did not respond to the interviewer's question."
+        ],
+        "missing_points": [
+          "Did not answer the question regarding Operating Systems."
+        ],
+        "missing_concepts": [
+          "Operating Systems"
+        ],
+        "detected_concepts": [],
+        "detected_claims": [],
+        "current_topic": "Operating Systems",
+        "current_difficulty": 3,
+        "next_action": "REDIRECT",
+        "reason": "Candidate answered with off-topic concepts; redirecting back to Operating Systems.",
+        "interviewer_risk": "HIGH",
+        "frank_feedback": "Your response discussed unrelated concepts rather than Operating Systems. In technical interviews, directly addressing the prompt is essential.",
+        "is_unknown": false,
+        "predicted_followups": [
+          {
+            "question": "Let's refocus on the original question: What is the difference between a process and a thread?",
+            "rationale": "Interviewer redirects candidate back to the target topic: Operating Systems.",
+            "depthLevel": 3,
+            "probability": 0.95
+          }
+        ],
+        "skill_impacts": [
+          {
+            "skillName": "Communication",
+            "delta": -1,
+            "reason": "Off-topic answer during technical round."
+          }
+        ]
+      },
+      "timestamp": "2026-10-14 15:00:00"
+    },
+    {
+      "question_id": "q-test-a",
+      "question_text": "Why did you choose YOLOv8 for vehicle detection in Traffix?",
+      "answer_text": "Because YOLO was faster.",
+      "evaluation": {
+        "success": true,
+        "question_id": "q-test-a",
+        "source_project": "Traffix \u2014 Urban Traffic Management System",
+        "answer_type": "PARTIAL",
+        "score": 60,
+        "overall_score": 60,
+        "completeness_score": 60,
+        "technical_accuracy": 64,
+        "technical_correctness": 64,
+        "depth": 3,
+        "depth_demonstrated": "Basic",
+        "specificity": 55,
+        "relevance": 85,
+        "evidence": 55,
+        "reasoning": 60,
+        "communication": 72,
+        "ownership": 75,
+        "is_unknown": false,
+        "current_topic": "Computer Vision / Edge ML",
+        "current_difficulty": 3,
+        "next_action": "CLARIFY",
+        "reason": "Candidate mentioned YOLO was faster; interviewer must probe measurement methodology and hardware trade-offs.",
+        "strengths": [
+          "Articulated clear technical motivation."
+        ],
+        "weaknesses": [
+          "Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
+          "Response was brief; lacked low-level profiling details."
+        ],
+        "missing_points": [
+          "Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
+          "Response was brief; lacked low-level profiling details."
+        ],
+        "missing_concepts": [
+          "Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
+          "Response was brief; lacked low-level profiling details."
+        ],
+        "detected_claims": [],
+        "detected_concepts": [
+          "YOLO",
+          "Latency Advantage"
+        ],
+        "interviewer_risk": "HIGH",
+        "frank_feedback": "Your response demonstrates partial understanding (60/100). Articulated clear technical motivation. However: Missing concrete quantitative benchmarks (e.g., latency in ms, FPS, memory consumption).",
+        "predicted_followups": [
+          {
+            "question": "How did you empirically measure that performance advantage (e.g. latency benchmarking, profiling tools), and what were the exact memory trade-offs?",
+            "rationale": "Candidate mentioned YOLO was faster; interviewer must probe measurement methodology and hardware trade-offs.",
+            "depthLevel": 3,
+            "probability": 0.94
+          }
+        ],
+        "skill_impacts": [
+          {
+            "skillName": "Engineering",
+            "delta": 1,
+            "reason": "Demonstrated partial proficiency in Computer Vision / Edge ML."
+          }
+        ]
+      },
+      "timestamp": "2026-10-14 15:00:00"
+    },
+    {
+      "question_id": "q-test-b",
+      "question_text": "Why did you choose YOLOv8 for vehicle detection in Traffix?",
+      "answer_text": "I chose YOLOv8 because it is an anchor-free single-stage detector delivering 45 FPS with sub-40ms latency, whereas Faster R-CNN uses a two-stage RPN requiring ~120ms.",
+      "evaluation": {
+        "success": true,
+        "question_id": "q-test-b",
+        "source_project": "Traffix \u2014 Urban Traffic Management System",
+        "answer_type": "STRONG",
+        "score": 94,
+        "overall_score": 94,
+        "completeness_score": 94,
+        "technical_accuracy": 98,
+        "technical_correctness": 98,
+        "depth": 4,
+        "depth_demonstrated": "Advanced",
+        "specificity": 99,
+        "relevance": 85,
+        "evidence": 85,
+        "reasoning": 94,
+        "communication": 88,
+        "ownership": 85,
+        "is_unknown": false,
+        "current_topic": "Computer Vision / Edge ML",
+        "current_difficulty": 4,
+        "next_action": "DEEP_PROBE",
+        "reason": "Candidate defended YOLOv8 with exact benchmarks; interviewer advances to multi-stream backpressure and VRAM concurrency.",
+        "strengths": [
+          "Precise quantitative SLA (sub-50ms vs 120ms)",
+          "Explicit single-stage anchor-free architectural comparison."
+        ],
+        "weaknesses": [
+          "Could discuss zero-copy frame tensors on PCIe bus."
+        ],
+        "missing_points": [
+          "Could discuss zero-copy frame tensors on PCIe bus."
+        ],
+        "missing_concepts": [
+          "Could discuss zero-copy frame tensors on PCIe bus."
+        ],
+        "detected_claims": [
+          "Adaptive Defense"
+        ],
+        "detected_concepts": [
+          "YOLOv8 Edge Inference",
+          "Single-Stage vs Two-Stage RPN",
+          "Hardware Memory SLA"
+        ],
+        "interviewer_risk": "LOW",
+        "frank_feedback": "Your response demonstrates strong understanding (94/100). Precise quantitative SLA (sub-50ms vs 120ms) However: Could discuss zero-copy frame tensors on PCIe bus.",
+        "predicted_followups": [
+          {
+            "question": "When processing 4 concurrent 1080p camera feeds at 30 FPS, how did you prevent GPU VRAM saturation and frame queue backpressure?",
+            "rationale": "Candidate defended YOLOv8 with exact benchmarks; interviewer advances to multi-stream backpressure and VRAM concurrency.",
+            "depthLevel": 4,
+            "probability": 0.94
+          }
+        ],
+        "skill_impacts": [
+          {
+            "skillName": "Engineering",
+            "delta": 3,
+            "reason": "Demonstrated strong proficiency in Computer Vision / Edge ML."
+          }
+        ]
+      },
+      "timestamp": "2026-10-14 15:00:00"
+    }
+  ]
 }

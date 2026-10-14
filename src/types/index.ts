@@ -173,12 +173,21 @@ export interface CandidateAnswer {
   }[];
 }
 
+export interface CodingCompanyTag {
+  name: string;
+  frequency: number;
+  tier?: string;
+}
+
 export interface CodingChallenge {
   id: string;
   title: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   category: string;
+  primaryCompany?: string;
+  companies?: CodingCompanyTag[];
   description: string;
+  constraints?: string[];
   starterCode: { [lang: string]: string };
   testCases: {
     input: string;
@@ -190,6 +199,36 @@ export interface CodingChallenge {
     time: string;
     space: string;
   };
+  companyRubric?: { [company: string]: string };
+  optimalSolution?: string;
+}
+
+export interface CodingEvaluationResult {
+  passed: boolean;
+  passedTestCases: number;
+  totalTestCases: number;
+  timeComplexity: string;
+  spaceComplexity: string;
+  isOptimal: boolean;
+  correctnessScore?: number;
+  efficiencyScore?: number;
+  codeQualityScore?: number;
+  companyVerdict?: string;
+  companyCalibration?: string;
+  feedback: string;
+  strengths?: string[];
+  improvements?: string[];
+  optimalSolution?: string;
+  executionEngine?: string;
+  executionTimeMs?: number;
+  testResults: {
+    input: string;
+    expected: string;
+    actual: string;
+    passed: boolean;
+    time_ms?: number;
+    error?: string;
+  }[];
 }
 
 export interface LearningDayModule {

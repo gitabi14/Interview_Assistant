@@ -29,6 +29,8 @@ from models import (
     ClaimVerificationResponse,
     CodingEvaluationRequest,
     CodingEvaluationResponse,
+    CodingSuggestRequest,
+    CodingSuggestResponse,
     BehavioralEvaluationRequest,
     BehavioralEvaluationResponse,
     RagSearchRequest,
@@ -42,7 +44,13 @@ from services.ai_service import ai_service
 from services.resume_parser import extract_text_from_pdf, extract_text_from_docx, parse_canonical_resume
 from services.rag_service import rag_store
 from services.db_service import db_service
-from services.coding_service import judge0_service
+from services.coding_service import (
+    judge0_service,
+    get_all_challenges,
+    get_challenge_by_id,
+    suggest_company_challenge,
+    evaluate_coding_intelligence
+)
 
 app = FastAPI(
     title="PrepForge AI — Professional Resume Intelligence & Interview Engine",
@@ -338,24 +346,53 @@ def verify_claim(req: ClaimVerificationRequest):
         "feedback": fb
     }
 
-@app.post("/api/coding/evaluate", response_model=CodingEvaluationResponse)
-def evaluate_coding_challenge(req: CodingEvaluationRequest):
-    """Executes code via Judge0 API and evaluates algorithmic correctness and time/space complexity."""
-    exec_res = judge0_service.execute_code(
-        source_code=req.code,
-        language=req.language
+@app.get("/api/coding/challenges")
+def list_coding_challenges(
+    company: Optional[str] = None,
+    role: Optional[str] = None,
+    difficulty: Optional[str] = None,
+    category: Optional[str] = None
+):
+    """Returns curated coding challenges filtered by company, role, difficulty, and category."""
+    return {
+        "challenges": get_all_challenges(
+            company=company,
+            role=role,
+            difficulty=difficulty,
+            category=category
+        )
+    }
+
+@app.get("/api/coding/challenges/{challenge_id}")
+def get_single_challenge(challenge_id: str):
+    """Fetches full challenge specification with multi-language starter templates."""
+    ch = get_challenge_by_id(challenge_id)
+    if not ch:
+        raise HTTPException(status_code=404, detail=f"Challenge '{challenge_id}' not found.")
+    return ch
+
+@app.post("/api/coding/suggest", response_model=CodingSuggestResponse)
+def suggest_challenge(req: CodingSuggestRequest):
+    """Recommends a company-specific coding problem based on target company hiring bar and weak topics."""
+    return suggest_company_challenge(
+        target_company=req.target_company,
+        target_role=req.target_role,
+        difficulty=req.difficulty,
+        weak_topics=req.weak_topics
     )
 
-    return {
-        "passed": exec_res.get("passed_all", True),
-        "passed_test_cases": exec_res.get("passed_tests", 3),
-        "total_test_cases": exec_res.get("total_tests", 3),
-        "time_complexity": exec_res.get("time_complexity", "O(N)"),
-        "space_complexity": exec_res.get("space_complexity", "O(N)"),
-        "is_optimal": exec_res.get("is_optimal", True),
-        "feedback": exec_res.get("feedback", "Optimal solution executed successfully."),
-        "test_results": exec_res.get("test_results", [])
-    }
+@app.post("/api/coding/evaluate", response_model=CodingEvaluationResponse)
+def evaluate_coding_challenge(req: CodingEvaluationRequest):
+    """Executes code via Judge0 CE / Native Sandbox and returns full hiring bar assessment."""
+    res = evaluate_coding_intelligence(
+        challenge_id=req.challenge_id,
+        language=req.language,
+        code=req.code,
+        target_company=req.target_company or "Microsoft",
+        target_role=req.target_role or "Software Engineer",
+        custom_input=req.custom_input
+    )
+    return res
 
 @app.post("/api/rag/search", response_model=RagSearchResponse)
 def search_rag(req: RagSearchRequest):

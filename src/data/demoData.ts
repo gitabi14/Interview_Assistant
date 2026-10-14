@@ -553,14 +553,28 @@ export const SAMPLE_QUESTIONS: InterviewQuestion[] = [
   },
 ];
 
-export const SAMPLE_CODING_CHALLENGE: CodingChallenge = {
-  id: 'two-sum',
-  title: 'Two Sum & Subarray Target Search',
-  difficulty: 'Easy',
-  category: 'Arrays & Hash Maps',
-  description: 'Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`. You may assume that each input would have exactly one solution, and you may not use the same element twice. An optimal solution must run in **O(n)** time complexity.',
-  starterCode: {
-    python: `def twoSum(nums: list[int], target: int) -> list[int]:
+export const COMPANY_CODING_CHALLENGES: CodingChallenge[] = [
+  {
+    id: 'two-sum',
+    title: 'Two Sum & Subarray Target Search',
+    difficulty: 'Easy',
+    category: 'Arrays & Hash Maps',
+    primaryCompany: 'Microsoft',
+    companies: [
+      { name: 'Microsoft', frequency: 88, tier: 'Tier 1' },
+      { name: 'Amazon', frequency: 85, tier: 'Tier 1' },
+      { name: 'Google', frequency: 80, tier: 'Tier 1' },
+      { name: 'Meta', frequency: 75, tier: 'Tier 1' },
+    ],
+    description: 'Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`. You may assume that each input would have exactly one solution, and you may not use the same element twice. An optimal solution must run in **O(n)** time complexity.',
+    constraints: [
+      '2 <= nums.length <= 10^4',
+      '-10^9 <= nums[i] <= 10^9',
+      '-10^9 <= target <= 10^9',
+      'Only one valid answer exists.',
+    ],
+    starterCode: {
+      python: `def twoSum(nums: list[int], target: int) -> list[int]:
     # Write your optimal O(n) solution here
     seen = {}
     for i, num in enumerate(nums):
@@ -570,7 +584,18 @@ export const SAMPLE_CODING_CHALLENGE: CodingChallenge = {
         seen[num] = i
     return []
 `,
-    cpp: `#include <vector>
+      javascript: `function twoSum(nums, target) {
+    const seen = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        const diff = target - nums[i];
+        if (seen.has(diff)) {
+            return [seen.get(diff), i];
+        }
+        seen.set(nums[i], i);
+    }
+    return [];
+}`,
+      cpp: `#include <vector>
 #include <unordered_map>
 using namespace std;
 
@@ -588,7 +613,7 @@ public:
         return {};
     }
 };`,
-    java: `import java.util.HashMap;
+      java: `import java.util.HashMap;
 import java.util.Map;
 
 class Solution {
@@ -604,30 +629,583 @@ class Solution {
         return new int[0];
     }
 }`,
-    javascript: `function twoSum(nums, target) {
-    const seen = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        const diff = target - nums[i];
-        if (seen.has(diff)) {
-            return [seen.get(diff), i];
-        }
-        seen.set(nums[i], i);
+    },
+    testCases: [
+      { input: 'nums = [2,7,11,15], target = 9', expectedOutput: '[0, 1]', explanation: 'nums[0] + nums[1] == 9, we return [0, 1].' },
+      { input: 'nums = [3,2,4], target = 6', expectedOutput: '[1, 2]', explanation: 'nums[1] + nums[2] == 6, we return [1, 2].' },
+      { input: 'nums = [3,3], target = 6', expectedOutput: '[0, 1]', explanation: 'nums[0] + nums[1] == 6, we return [0, 1].' },
+      { input: 'nums = [-1,-2,-3,-4,-5], target = -8', expectedOutput: '[2, 4]', explanation: 'Negative numbers correctly handled.' },
+      { input: 'nums = [1000000, 500, 2000000, 500], target = 1000', expectedOutput: '[1, 3]', explanation: 'Large inputs tested for O(n) hash map optimality.', isHidden: true },
+    ],
+    expectedComplexity: {
+      time: 'O(n) — Single pass with hash map lookup',
+      space: 'O(n) — Hash table storage of seen elements',
+    },
+    companyRubric: {
+      Microsoft: 'Evaluates clean edge validation, single-pass hash map lookup, and avoiding O(N^2) brute force.',
+      Amazon: 'Probes memory utilization and handling of duplicate integer values.',
+      Google: 'Expects instant recognition of complement math and zero unnecessary allocations.',
+    },
+  },
+  {
+    id: 'lru-cache',
+    title: 'Design LRU Cache with O(1) Get & Put',
+    difficulty: 'Medium',
+    category: 'Design & Data Structures',
+    primaryCompany: 'Microsoft',
+    companies: [
+      { name: 'Microsoft', frequency: 92, tier: 'Tier 1' },
+      { name: 'Amazon', frequency: 90, tier: 'Tier 1' },
+      { name: 'Meta', frequency: 85, tier: 'Tier 1' },
+      { name: 'Apple', frequency: 80, tier: 'Tier 1' },
+    ],
+    description: 'Design a data structure that follows the constraints of a **Least Recently Used (LRU) Cache**. Implement the `LRUCache` class with `get(key)` and `put(key, value)` in **O(1)** average time complexity.',
+    constraints: [
+      '1 <= capacity <= 3000',
+      '0 <= key <= 10^4',
+      '0 <= value <= 10^5',
+      'At most 2 * 10^5 calls will be made to get and put.',
+    ],
+    starterCode: {
+      python: `class Node:
+    def __init__(self, key=0, val=0):
+        self.key, self.val = key, val
+        self.prev = self.next = None
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cap = capacity
+        self.cache = {}
+        self.head, self.tail = Node(), Node()
+        self.head.next, self.tail.prev = self.tail, self.head
+
+    def get(self, key: int) -> int:
+        if key in self.cache:
+            node = self.cache[key]
+            self._remove(node)
+            self._insert(node)
+            return node.val
+        return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            self._remove(self.cache[key])
+        node = Node(key, value)
+        self.cache[key] = node
+        self._insert(node)
+        if len(self.cache) > self.cap:
+            lru = self.head.next
+            self._remove(lru)
+            del self.cache[lru.key]
+
+    def _remove(self, node):
+        prev, nxt = node.prev, node.next
+        prev.next, nxt.prev = nxt, prev
+
+    def _insert(self, node):
+        prev, nxt = self.tail.prev, self.tail
+        prev.next = node
+        node.prev, node.next = prev, nxt
+        nxt.prev = node
+`,
+      javascript: `class LRUCache {
+    constructor(capacity) {
+        this.capacity = capacity;
+        this.map = new Map();
     }
-    return [];
+    get(key) {
+        if (!this.map.has(key)) return -1;
+        const val = this.map.get(key);
+        this.map.delete(key);
+        this.map.set(key, val);
+        return val;
+    }
+    put(key, value) {
+        if (this.map.has(key)) this.map.delete(key);
+        this.map.set(key, value);
+        if (this.map.size > this.capacity) {
+            const oldestKey = this.map.keys().next().value;
+            this.map.delete(oldestKey);
+        }
+    }
 }`,
+      cpp: `#include <unordered_map>
+#include <list>
+using namespace std;
+
+class LRUCache {
+    int cap;
+    list<pair<int, int>> lru;
+    unordered_map<int, list<pair<int, int>>::iterator> mp;
+public:
+    LRUCache(int capacity) : cap(capacity) {}
+    int get(int key) {
+        if (mp.find(key) == mp.end()) return -1;
+        lru.splice(lru.begin(), lru, mp[key]);
+        return mp[key]->second;
+    }
+    void put(int key, int value) {
+        if (mp.find(key) != mp.end()) {
+            lru.splice(lru.begin(), lru, mp[key]);
+            mp[key]->second = value;
+            return;
+        }
+        if (lru.size() == cap) {
+            mp.erase(lru.back().first);
+            lru.pop_back();
+        }
+        lru.emplace_front(key, value);
+        mp[key] = lru.begin();
+    }
+};`,
+      java: `import java.util.LinkedHashMap;
+import java.util.Map;
+
+class LRUCache extends LinkedHashMap<Integer, Integer> {
+    private final int capacity;
+    public LRUCache(int capacity) {
+        super(capacity, 0.75f, true);
+        this.capacity = capacity;
+    }
+    public int get(int key) {
+        return super.getOrDefault(key, -1);
+    }
+    public void put(int key, int value) {
+        super.put(key, value);
+    }
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+        return size() > capacity;
+    }
+}`,
+    },
+    testCases: [
+      { input: 'capacity=2, put(1,1), put(2,2), get(1), put(3,3), get(2)', expectedOutput: '[-1, 1]', explanation: 'Key 2 evicted because key 1 was accessed.' },
+      { input: 'capacity=1, put(2,1), get(2), put(3,2), get(2), get(3)', expectedOutput: '[1, -1, 2]', explanation: 'Capacity 1 evicts correctly on insert.' },
+    ],
+    expectedComplexity: {
+      time: 'O(1) average for get and put',
+      space: 'O(capacity) auxiliary memory for Hash Map and Doubly Linked List',
+    },
+    companyRubric: {
+      Microsoft: 'Tests Doubly Linked List + Hash Map pointer manipulation without memory leaks or race conditions.',
+      Amazon: 'Focuses on thread safety and eviction race conditions under concurrent traffic.',
+    },
   },
-  testCases: [
-    { input: 'nums = [2,7,11,15], target = 9', expectedOutput: '[0, 1]', explanation: 'nums[0] + nums[1] == 9, we return [0, 1].' },
-    { input: 'nums = [3,2,4], target = 6', expectedOutput: '[1, 2]', explanation: 'nums[1] + nums[2] == 6, we return [1, 2].' },
-    { input: 'nums = [3,3], target = 6', expectedOutput: '[0, 1]', explanation: 'nums[0] + nums[1] == 6, we return [0, 1].' },
-    { input: 'nums = [-1,-2,-3,-4,-5], target = -8', expectedOutput: '[2, 4]', explanation: 'nums[2] + nums[4] == -8, we return [2, 4].' },
-    { input: 'nums = [1000000, 500, 2000000, 500], target = 1000', expectedOutput: '[1, 3]', explanation: 'Large inputs tested for O(n) hash map optimality.', isHidden: true },
-  ],
-  expectedComplexity: {
-    time: 'O(n) — Single pass with hash map lookup',
-    space: 'O(n) — Hash table storage of seen elements',
+  {
+    id: 'trapping-rain-water',
+    title: 'Trapping Rain Water Elevation Calculation',
+    difficulty: 'Hard',
+    category: 'Two Pointers & Monotonic Stack',
+    primaryCompany: 'Google',
+    companies: [
+      { name: 'Google', frequency: 94, tier: 'Tier 1' },
+      { name: 'Amazon', frequency: 88, tier: 'Tier 1' },
+      { name: 'Microsoft', frequency: 78, tier: 'Tier 1' },
+    ],
+    description: 'Given `n` non-negative integers representing an elevation map where the width of each bar is `1`, compute how much water it can trap after raining.',
+    constraints: [
+      'n == height.length',
+      '1 <= n <= 2 * 10^4',
+      '0 <= height[i] <= 10^5',
+    ],
+    starterCode: {
+      python: `def trap(height: list[int]) -> int:
+    if not height:
+        return 0
+    left, right = 0, len(height) - 1
+    left_max, right_max = height[left], height[right]
+    water = 0
+    while left < right:
+        if left_max < right_max:
+            left += 1
+            left_max = max(left_max, height[left])
+            water += left_max - height[left]
+        else:
+            right -= 1
+            right_max = max(right_max, height[right])
+            water += right_max - height[right]
+    return water
+`,
+      javascript: `function trap(height) {
+    let left = 0, right = height.length - 1;
+    let leftMax = 0, rightMax = 0, water = 0;
+    while (left < right) {
+        if (height[left] < height[right]) {
+            if (height[left] >= leftMax) leftMax = height[left];
+            else water += leftMax - height[left];
+            left++;
+        } else {
+            if (height[right] >= rightMax) rightMax = height[right];
+            else water += rightMax - height[right];
+            right--;
+        }
+    }
+    return water;
+}`,
+      cpp: `#include <vector>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int left = 0, right = height.size() - 1;
+        int left_max = 0, right_max = 0, water = 0;
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] >= left_max) left_max = height[left];
+                else water += left_max - height[left];
+                left++;
+            } else {
+                if (height[right] >= right_max) right_max = height[right];
+                else water += right_max - height[right];
+                right--;
+            }
+        }
+        return water;
+    }
+};`,
+      java: `class Solution {
+    public int trap(int[] height) {
+        int left = 0, right = height.length - 1;
+        int leftMax = 0, rightMax = 0, water = 0;
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] >= leftMax) leftMax = height[left];
+                else water += leftMax - height[left];
+                left++;
+            } else {
+                if (height[right] >= rightMax) rightMax = height[right];
+                else water += rightMax - height[right];
+                right--;
+            }
+        }
+        return water;
+    }
+}`,
+    },
+    testCases: [
+      { input: '[0,1,0,2,1,0,1,3,2,1,2,1]', expectedOutput: '6', explanation: 'Traps 6 units of rain water.' },
+      { input: '[4,2,0,3,2,5]', expectedOutput: '9', explanation: 'Traps 9 units of rain water.' },
+    ],
+    expectedComplexity: {
+      time: 'O(N) — Single pass two pointer convergence',
+      space: 'O(1) — Constant extra space',
+    },
+    companyRubric: {
+      Google: 'Demands two-pointer convergence with O(1) memory. Storing prefix/suffix arrays receives Lean Hire.',
+    },
   },
-};
+  {
+    id: 'number-of-islands',
+    title: 'Number of Islands & Grid Traversal',
+    difficulty: 'Medium',
+    category: 'Trees & Graphs',
+    primaryCompany: 'Amazon',
+    companies: [
+      { name: 'Amazon', frequency: 95, tier: 'Tier 1' },
+      { name: 'Microsoft', frequency: 86, tier: 'Tier 1' },
+      { name: 'Google', frequency: 82, tier: 'Tier 1' },
+    ],
+    description: 'Given an `m x n` 2D binary grid which represents a map of `1`s (land) and `0`s (water), return the number of islands. An island is formed by connecting adjacent lands horizontally or vertically.',
+    constraints: [
+      'm == grid.length',
+      'n == grid[i].length',
+      '1 <= m, n <= 300',
+    ],
+    starterCode: {
+      python: `def numIslands(grid: list[list[str]]) -> int:
+    if not grid:
+        return 0
+    m, n = len(grid), len(grid[0])
+    count = 0
+    def dfs(r, c):
+        if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] != '1':
+            return
+        grid[r][c] = '0'
+        dfs(r + 1, c)
+        dfs(r - 1, c)
+        dfs(r, c + 1)
+        dfs(r, c - 1)
+    for r in range(m):
+        for c in range(n):
+            if grid[r][c] == '1':
+                count += 1
+                dfs(r, c)
+    return count
+`,
+      javascript: `function numIslands(grid) {
+    if (!grid || grid.length === 0) return 0;
+    const m = grid.length, n = grid[0].length;
+    let count = 0;
+    function dfs(r, c) {
+        if (r < 0 || r >= m || c < 0 || c >= n || grid[r][c] !== '1') return;
+        grid[r][c] = '0';
+        dfs(r + 1, c);
+        dfs(r - 1, c);
+        dfs(r, c + 1);
+        dfs(r, c - 1);
+    }
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (grid[r][c] === '1') {
+                count++;
+                dfs(r, c);
+            }
+        }
+    }
+    return count;
+}`,
+      cpp: `#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        if (grid.empty()) return 0;
+        int m = grid.size(), n = grid[0].size(), count = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    count++;
+                    dfs(grid, i, j, m, n);
+                }
+            }
+        }
+        return count;
+    }
+private:
+    void dfs(vector<vector<char>>& g, int r, int c, int m, int n) {
+        if (r < 0 || r >= m || c < 0 || c >= n || g[r][c] != '1') return;
+        g[r][c] = '0';
+        dfs(g, r+1, c, m, n);
+        dfs(g, r-1, c, m, n);
+        dfs(g, r, c+1, m, n);
+        dfs(g, r, c-1, m, n);
+    }
+};`,
+      java: `class Solution {
+    public int numIslands(char[][] grid) {
+        if (grid == null || grid.length == 0) return 0;
+        int count = 0;
+        for (int r = 0; r < grid.length; r++) {
+            for (int c = 0; c < grid[0].length; c++) {
+                if (grid[r][c] == '1') {
+                    count++;
+                    dfs(grid, r, c);
+                }
+            }
+        }
+        return count;
+    }
+    private void dfs(char[][] grid, int r, int c) {
+        if (r < 0 || r >= grid.length || c < 0 || c >= grid[0].length || grid[r][c] != '1') return;
+        grid[r][c] = '0';
+        dfs(grid, r+1, c);
+        dfs(grid, r-1, c);
+        dfs(grid, r, c+1);
+        dfs(grid, r, c-1);
+    }
+}`,
+    },
+    testCases: [
+      { input: "[['1','1','1','1','0'],['1','1','0','1','0'],['1','1','0','0','0'],['0','0','0','0','0']]", expectedOutput: '1', explanation: 'One connected island.' },
+      { input: "[['1','1','0','0','0'],['1','1','0','0','0'],['0','0','1','0','0'],['0','0','0','1','1']]", expectedOutput: '3', explanation: 'Three separate islands.' },
+    ],
+    expectedComplexity: {
+      time: 'O(M * N) — Every cell visited at most constant times',
+      space: 'O(M * N) — Recursion stack worst case',
+    },
+    companyRubric: {
+      Amazon: 'Tests clean in-place grid sinking vs maintaining an unnecessary visited hash set.',
+    },
+  },
+  {
+    id: 'subarray-sum-equals-k',
+    title: 'Subarray Sum Equals K & Prefix Map',
+    difficulty: 'Medium',
+    category: 'Arrays & Hash Maps',
+    primaryCompany: 'Meta',
+    companies: [
+      { name: 'Meta', frequency: 92, tier: 'Tier 1' },
+      { name: 'Google', frequency: 84, tier: 'Tier 1' },
+      { name: 'Microsoft', frequency: 80, tier: 'Tier 1' },
+    ],
+    description: 'Given an array of integers `nums` and an integer `k`, return the total number of continuous subarrays whose sum equals to `k`. Optimal goal is **O(n)** time using a Prefix Sum Frequency Map initialized with `{0: 1}`.',
+    constraints: [
+      '1 <= nums.length <= 2 * 10^4',
+      '-1000 <= nums[i] <= 1000',
+      '-10^7 <= k <= 10^7',
+    ],
+    starterCode: {
+      python: `def subarraySum(nums: list[int], k: int) -> int:
+    prefix_map = {0: 1}
+    curr_sum = 0
+    count = 0
+    for num in nums:
+        curr_sum += num
+        if (curr_sum - k) in prefix_map:
+            count += prefix_map[curr_sum - k]
+        prefix_map[curr_sum] = prefix_map.get(curr_sum, 0) + 1
+    return count
+`,
+      javascript: `function subarraySum(nums, k) {
+    const map = new Map([[0, 1]]);
+    let sum = 0, count = 0;
+    for (const num of nums) {
+        sum += num;
+        if (map.has(sum - k)) count += map.get(sum - k);
+        map.set(sum, (map.get(sum) || 0) + 1);
+    }
+    return count;
+}`,
+      cpp: `#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int, int> prefix{{0, 1}};
+        int sum = 0, count = 0;
+        for (int n : nums) {
+            sum += n;
+            if (prefix.count(sum - k)) count += prefix[sum - k];
+            prefix[sum]++;
+        }
+        return count;
+    }
+};`,
+      java: `import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        int sum = 0, count = 0;
+        for (int num : nums) {
+            sum += num;
+            if (map.containsKey(sum - k)) count += map.get(sum - k);
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+        return count;
+    }
+}`,
+    },
+    testCases: [
+      { input: '[1, 1, 1], k = 2', expectedOutput: '2', explanation: '[1,1] at 0..1 and 1..2.' },
+      { input: '[1, 2, 3], k = 3', expectedOutput: '2', explanation: '[1,2] and [3].' },
+      { input: '[1, -1, 0], k = 0', expectedOutput: '3', explanation: 'Negative numbers and zeroes handled.' },
+    ],
+    expectedComplexity: {
+      time: 'O(N) — Single pass with hash table lookup',
+      space: 'O(N) — Prefix sum frequency storage',
+    },
+    companyRubric: {
+      Meta: 'Probes why sliding window fails on arrays containing negative numbers.',
+    },
+  },
+  {
+    id: 'product-of-array-except-self',
+    title: 'Product of Array Except Self without Division',
+    difficulty: 'Medium',
+    category: 'Arrays & Hash Maps',
+    primaryCompany: 'Apple',
+    companies: [
+      { name: 'Apple', frequency: 90, tier: 'Tier 1' },
+      { name: 'Amazon', frequency: 86, tier: 'Tier 1' },
+      { name: 'Meta', frequency: 84, tier: 'Tier 1' },
+    ],
+    description: 'Given an integer array `nums`, return an array `answer` such that `answer[i]` is equal to the product of all elements of `nums` except `nums[i]`. You must write an algorithm that runs in **O(n)** time without using the division operation.',
+    constraints: [
+      '2 <= nums.length <= 10^5',
+      '-30 <= nums[i] <= 30',
+    ],
+    starterCode: {
+      python: `def productExceptSelf(nums: list[int]) -> list[int]:
+    n = len(nums)
+    res = [1] * n
+    prefix = 1
+    for i in range(n):
+        res[i] = prefix
+        prefix *= nums[i]
+    postfix = 1
+    for i in range(n - 1, -1, -1):
+        res[i] *= postfix
+        postfix *= nums[i]
+    return res
+`,
+      javascript: `function productExceptSelf(nums) {
+    const n = nums.length;
+    const res = new Array(n).fill(1);
+    let prefix = 1;
+    for (let i = 0; i < n; i++) {
+        res[i] = prefix;
+        prefix *= nums[i];
+    }
+    let postfix = 1;
+    for (let i = n - 1; i >= 0; i--) {
+        res[i] *= postfix;
+        postfix *= nums[i];
+    }
+    return res;
+}`,
+      cpp: `#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> res(n, 1);
+        int prefix = 1;
+        for (int i = 0; i < n; i++) {
+            res[i] = prefix;
+            prefix *= nums[i];
+        }
+        int postfix = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            res[i] *= postfix;
+            postfix *= nums[i];
+        }
+        return res;
+    }
+};`,
+      java: `class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        int prefix = 1;
+        for (int i = 0; i < n; i++) {
+            res[i] = prefix;
+            prefix *= nums[i];
+        }
+        int postfix = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            res[i] *= postfix;
+            postfix *= nums[i];
+        }
+        return res;
+    }
+}`,
+    },
+    testCases: [
+      { input: '[1, 2, 3, 4]', expectedOutput: '[24, 12, 8, 6]', explanation: 'Multiplication without self element.' },
+      { input: '[-1, 1, 0, -3, 3]', expectedOutput: '[0, 0, 9, 0, 0]', explanation: 'Zero element handled without division.' },
+    ],
+    expectedComplexity: {
+      time: 'O(N) — Two passes forward and backward',
+      space: 'O(1) — Output array not counted toward space',
+    },
+    companyRubric: {
+      Apple: 'Strict constraint: division is forbidden; demands O(1) auxiliary memory.',
+    },
+  },
+];
+
+export const SAMPLE_CODING_CHALLENGE: CodingChallenge = COMPANY_CODING_CHALLENGES[0];
 
 export const INITIAL_LEARNING_PLAN: LearningDayModule[] = [
   {

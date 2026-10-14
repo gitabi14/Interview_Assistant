@@ -248,11 +248,14 @@ class ClaimVerificationResponse(BaseModel):
     findings_gaps: List[str] = []
     risk_level: str = "MEDIUM"
 
-# --- Coding Evaluation ---
+# --- Coding Evaluation & Challenges ---
 class CodingEvaluationRequest(BaseModel):
     challenge_id: str
     language: str
     code: str
+    target_company: Optional[str] = "Microsoft"
+    target_role: Optional[str] = "Software Engineer"
+    custom_input: Optional[str] = None
 
 class CodingEvaluationResponse(BaseModel):
     success: bool = True
@@ -262,8 +265,29 @@ class CodingEvaluationResponse(BaseModel):
     time_complexity: str
     space_complexity: str
     is_optimal: bool
+    correctness_score: int = 100
+    efficiency_score: int = 90
+    code_quality_score: int = 85
+    company_verdict: str = "Strong Hire"
+    company_calibration: str = ""
     feedback: str
+    strengths: List[str] = []
+    improvements: List[str] = []
+    optimal_solution: Optional[str] = None
     test_results: List[Dict[str, Any]] = []
+    execution_engine: str = "Judge0 Native Sandbox"
+    execution_time_ms: float = 20.0
+
+class CodingSuggestRequest(BaseModel):
+    target_company: str = "Microsoft"
+    target_role: str = "Software Engineer"
+    difficulty: Optional[str] = None
+    weak_topics: Optional[List[str]] = []
+
+class CodingSuggestResponse(BaseModel):
+    challenge: Dict[str, Any]
+    recommendation_reason: str
+    company_rubric: str
 
 # --- Behavioral Evaluation ---
 class BehavioralEvaluationRequest(BaseModel):

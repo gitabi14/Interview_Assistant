@@ -11,6 +11,7 @@ import {
   InterviewQuestion,
   CandidateAnswer,
   CodingChallenge,
+  CodingEvaluationResult,
   LearningDayModule,
   KnowledgeDocument,
   ReadinessBreakdown,
@@ -28,6 +29,7 @@ import {
   INITIAL_READINESS,
   SAMPLE_QUESTIONS,
   SAMPLE_CODING_CHALLENGE,
+  COMPANY_CODING_CHALLENGES,
   INITIAL_LEARNING_PLAN,
   INITIAL_KNOWLEDGE_DOCS,
   INITIAL_INTERVIEW_HISTORY,
@@ -80,22 +82,18 @@ interface PrepForgeContextType {
   nextQuestion: () => void;
 
   // Coding Intelligence
+  codingChallenges: CodingChallenge[];
   codingChallenge: CodingChallenge;
+  selectCodingChallenge: (challengeId: string) => void;
+  suggestCompanyCodingChallenge: () => Promise<void>;
   userCode: string;
   setUserCode: (code: string) => void;
   selectedCodeLanguage: string;
   setSelectedCodeLanguage: (lang: string) => void;
-  codingEvaluationResult: {
-    passed: boolean;
-    passedTestCases: number;
-    totalTestCases: number;
-    timeComplexity: string;
-    spaceComplexity: string;
-    isOptimal: boolean;
-    feedback: string;
-    testResults: { input: string; expected: string; actual: string; passed: boolean }[];
-  } | null;
-  evaluateCodeSubmission: () => void;
+  isExecutingCode: boolean;
+  codingEvaluationResult: CodingEvaluationResult | null;
+  evaluateCodeSubmission: () => Promise<void>;
+  runCustomCode: (customInput: string) => Promise<void>;
 
   // Behavioral & STAR Assessment
   starForm: { situation: string; task: string; action: string; result: string };
@@ -183,10 +181,12 @@ export const PrepForgeProvider: React.FC<{ children: ReactNode }> = ({ children 
   const [lastAnswerEvaluation, setLastAnswerEvaluation] = useState<CandidateAnswer | null>(null);
 
   // Coding Challenge
-  const [codingChallenge, setCodingChallenge] = useState<CodingChallenge>(SAMPLE_CODING_CHALLENGE);
+  const [codingChallenges, setCodingChallenges] = useState<CodingChallenge[]>(COMPANY_CODING_CHALLENGES);
+  const [codingChallenge, setCodingChallenge] = useState<CodingChallenge>(COMPANY_CODING_CHALLENGES[0] || SAMPLE_CODING_CHALLENGE);
   const [selectedCodeLanguage, setSelectedCodeLanguage] = useState<string>('python');
-  const [userCode, setUserCode] = useState<string>(SAMPLE_CODING_CHALLENGE.starterCode.python);
-  const [codingEvaluationResult, setCodingEvaluationResult] = useState<PrepForgeContextType['codingEvaluationResult']>(null);
+  const [userCode, setUserCode] = useState<string>(COMPANY_CODING_CHALLENGES[0]?.starterCode?.python || SAMPLE_CODING_CHALLENGE.starterCode.python);
+  const [codingEvaluationResult, setCodingEvaluationResult] = useState<CodingEvaluationResult | null>(null);
+  const [isExecutingCode, setIsExecutingCode] = useState<boolean>(false);
 
   // Behavioral STAR
   const [starForm, setStarForm] = useState({
@@ -778,8 +778,78 @@ export const PrepForgeProvider: React.FC<{ children: ReactNode }> = ({ children 
     setCurrentAnswerText('');
   };
 
-  // Helper: Code Execution & Complexity Evaluator (Real Backend API)
-  const evaluateCodeSubmission = async () => {
+  // Helper: Select coding challenge and load corresponding starter code
+  const selectCodingChallenge = (challengeId: string) => {
+    const found = codingChallenges.find((c) => c.id === challengeId);
+    if (found) {
+      setCodingChallenge(found);
+      const code = found.starterCode[selectedCodeLanguage] || found.starterCode['python'] || '';
+      setUserCode(code);
+      setCodingEvaluationResult(null);
+    }
+  };
+
+  // Helper: Switch language and sync template code
+  const handleSelectCodeLanguage = (lang: string) => {
+    setSelectedCodeLanguage(lang);
+    if (codingChallenge?.starterCode?.[lang]) {
+      setUserCode(codingChallenge.starterCode[lang]);
+    }
+  };
+
+  // Helper: Suggest company-specific challenge from backend AI
+  const suggestCompanyCodingChallenge = async () => {
+    setIsExecutingCode(true);
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/coding/suggest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          target_company: target.company,
+          target_role: target.role,
+          difficulty: target.difficulty,
+          weak_topics: skills.filter((s) => s.score < 70).map((s) => s.name),
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.challenge) {
+          const ch = data.challenge;
+          const mappedCh: CodingChallenge = {
+            id: ch.id,
+            title: ch.title,
+            difficulty: ch.difficulty,
+            category: ch.category,
+            primaryCompany: ch.primary_company,
+            companies: ch.companies,
+            description: ch.description,
+            constraints: ch.constraints,
+            starterCode: ch.starter_code || ch.starterCode,
+            testCases: (ch.test_cases || []).map((t: any) => ({
+              input: t.input,
+              expectedOutput: t.expected || t.expectedOutput,
+              explanation: t.explanation,
+              isHidden: t.is_hidden,
+            })),
+            expectedComplexity: ch.expected_complexity || ch.expectedComplexity,
+            companyRubric: ch.company_rubric,
+            optimalSolution: ch.optimal_solution,
+          };
+          setCodingChallenge(mappedCh);
+          setUserCode(mappedCh.starterCode[selectedCodeLanguage] || mappedCh.starterCode['python'] || '');
+          setCodingEvaluationResult(null);
+        }
+      }
+    } catch (err) {
+      console.warn('Suggest coding challenge error:', err);
+    } finally {
+      setIsExecutingCode(false);
+    }
+  };
+
+  // Helper: Run custom test input
+  const runCustomCode = async (customInput: string) => {
+    setIsExecutingCode(true);
     try {
       const res = await fetch('http://127.0.0.1:8000/api/coding/evaluate', {
         method: 'POST',
@@ -788,6 +858,9 @@ export const PrepForgeProvider: React.FC<{ children: ReactNode }> = ({ children 
           challenge_id: codingChallenge.id,
           language: selectedCodeLanguage,
           code: userCode,
+          target_company: target.company,
+          target_role: target.role,
+          custom_input: customInput,
         }),
       });
       if (res.ok) {
@@ -799,25 +872,92 @@ export const PrepForgeProvider: React.FC<{ children: ReactNode }> = ({ children 
           timeComplexity: data.time_complexity,
           spaceComplexity: data.space_complexity,
           isOptimal: data.is_optimal,
+          correctnessScore: data.correctness_score,
+          efficiencyScore: data.efficiency_score,
+          codeQualityScore: data.code_quality_score,
+          companyVerdict: data.company_verdict,
+          companyCalibration: data.company_calibration,
           feedback: data.feedback,
+          strengths: data.strengths || [],
+          improvements: data.improvements || [],
+          optimalSolution: data.optimal_solution,
+          executionEngine: data.execution_engine,
+          executionTimeMs: data.execution_time_ms,
           testResults: (data.test_results || []).map((t: any) => ({
             input: t.input,
             expected: t.expected,
             actual: t.actual,
             passed: t.passed,
+            time_ms: t.time_ms,
+            error: t.error,
+          })),
+        });
+      }
+    } catch (err) {
+      console.warn('Run custom code error:', err);
+    } finally {
+      setIsExecutingCode(false);
+    }
+  };
+
+  // Helper: Code Execution & Complexity Evaluator (Real Backend API)
+  const evaluateCodeSubmission = async () => {
+    setIsExecutingCode(true);
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/coding/evaluate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          challenge_id: codingChallenge.id,
+          language: selectedCodeLanguage,
+          code: userCode,
+          target_company: target.company,
+          target_role: target.role,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setCodingEvaluationResult({
+          passed: data.passed,
+          passedTestCases: data.passed_test_cases,
+          totalTestCases: data.total_test_cases,
+          timeComplexity: data.time_complexity,
+          spaceComplexity: data.space_complexity,
+          isOptimal: data.is_optimal,
+          correctnessScore: data.correctness_score,
+          efficiencyScore: data.efficiency_score,
+          codeQualityScore: data.code_quality_score,
+          companyVerdict: data.company_verdict,
+          companyCalibration: data.company_calibration,
+          feedback: data.feedback,
+          strengths: data.strengths || [],
+          improvements: data.improvements || [],
+          optimalSolution: data.optimal_solution,
+          executionEngine: data.execution_engine,
+          executionTimeMs: data.execution_time_ms,
+          testResults: (data.test_results || []).map((t: any) => ({
+            input: t.input,
+            expected: t.expected,
+            actual: t.actual,
+            passed: t.passed,
+            time_ms: t.time_ms,
+            error: t.error,
           })),
         });
 
-        if (data.is_optimal) {
-          updateSkillScore('DSA', +4, 'Optimal algorithm demonstrated.');
-          updateSkillScore('Problem Solving', +3, 'Optimal time complexity.');
+        if (data.is_optimal && data.passed) {
+          updateSkillScore('DSA', +5, `${target.company} optimal ${data.time_complexity} algorithm demonstrated.`);
+          updateSkillScore('Problem Solving', +4, `Solved ${codingChallenge.title} within constraints.`);
+        } else if (data.passed) {
+          updateSkillScore('DSA', +1, 'Basic correctness achieved; optimization challenge.');
         } else {
-          updateSkillScore('DSA', -2, 'Suboptimal complexity.');
+          updateSkillScore('DSA', -2, 'Failed test case bounds or syntax constraints.');
         }
-        return;
       }
     } catch (err) {
       console.warn('Coding evaluation backend error:', err);
+    } finally {
+      setIsExecutingCode(false);
     }
   };
 
@@ -1121,13 +1261,18 @@ export const PrepForgeProvider: React.FC<{ children: ReactNode }> = ({ children 
         submitAnswer,
         jumpToQuestion,
         nextQuestion,
+        codingChallenges,
         codingChallenge,
+        selectCodingChallenge,
+        suggestCompanyCodingChallenge,
         userCode,
         setUserCode,
         selectedCodeLanguage,
-        setSelectedCodeLanguage,
+        setSelectedCodeLanguage: handleSelectCodeLanguage,
+        isExecutingCode,
         codingEvaluationResult,
         evaluateCodeSubmission,
+        runCustomCode,
         starForm,
         setStarForm,
         starEvaluation,
